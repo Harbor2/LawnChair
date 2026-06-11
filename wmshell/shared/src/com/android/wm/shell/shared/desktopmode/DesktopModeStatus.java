@@ -43,7 +43,7 @@ import java.util.Arrays;
  *
  * @deprecated Use {@link DesktopState} or {@link DesktopConfig} instead.
  */
-@Deprecated(forRemoval = true)
+@Deprecated(forRemoval = false)
 public class DesktopModeStatus {
 
     @Nullable

@@ -158,9 +158,7 @@ class LawnchairLauncher : QuickstepLauncher() {
 
         prefs.launcherTheme.subscribeChanges(this, ::updateTheme)
         prefs.feedProvider.subscribeChanges(this, defaultOverlay::reconnect)
-        preferenceManager2.enableFeed.get().distinctUntilChanged().onEach { enable ->
-            defaultOverlay.setEnableFeed(enable)
-        }.launchIn(scope = lifecycleScope)
+        defaultOverlay.setEnableFeed(true)
         launcher.stateManager.addStateListener(clearSearchStateListener)
 
         if (prefs.autoLaunchRoot.get()) {
