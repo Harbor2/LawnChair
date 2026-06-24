@@ -1,19 +1,16 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     // 如果需要 Kotlin 支持
     alias(libs.plugins.kotlin.compose)
 }
 
 android {
     namespace = "com.example.negative_screen"
-    compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.example.negative_screen"
         minSdk = 24
-        targetSdk = 37
-        versionCode = 1
-        versionName = "1.0"
     }
 
     buildTypes {
@@ -25,6 +22,15 @@ android {
     }
     buildFeatures {
         compose = true
+        aidl = true
+        viewBinding = true
+    }
+
+    sourceSets {
+        getByName("main") {
+            // 让这个模块也去加载主项目中的 aidl 目录
+            aidl.srcDirs("../lawnchair/aidl")
+        }
     }
 }
 

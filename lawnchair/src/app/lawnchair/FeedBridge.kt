@@ -128,18 +128,21 @@ class FeedBridge(private val context: Context) {
     private inner class CustomBridgeInfo(packageName: String) : BridgeInfo(packageName, 0) {
         override val signatureHash = whitelist[packageName]?.toInt() ?: -1
         val ignoreWhitelist = prefs.ignoreFeedWhitelist.get()
+//        override fun isSigned(): Boolean {
+//            if (signatureHash == -1 && Utilities.ATLEAST_P) {
+//                val info = context.packageManager
+//                    .getPackageInfo(packageName, PackageManager.GET_SIGNING_CERTIFICATES)
+//                val signingInfo = info.signingInfo
+//                if (signingInfo!!.hasMultipleSigners()) return false
+//                signingInfo.signingCertificateHistory.forEach {
+//                    val hash = Integer.toHexString(it.hashCode())
+//                    Log.d(TAG, "Feed provider $packageName(0x$hash) isn't whitelisted")
+//                }
+//            }
+//            return ignoreWhitelist || signatureHash != -1 && super.isSigned()
+//        }
         override fun isSigned(): Boolean {
-            if (signatureHash == -1 && Utilities.ATLEAST_P) {
-                val info = context.packageManager
-                    .getPackageInfo(packageName, PackageManager.GET_SIGNING_CERTIFICATES)
-                val signingInfo = info.signingInfo
-                if (signingInfo!!.hasMultipleSigners()) return false
-                signingInfo.signingCertificateHistory.forEach {
-                    val hash = Integer.toHexString(it.hashCode())
-                    Log.d(TAG, "Feed provider $packageName(0x$hash) isn't whitelisted")
-                }
-            }
-            return ignoreWhitelist || signatureHash != -1 && super.isSigned()
+            return true
         }
     }
 
@@ -167,15 +170,21 @@ class FeedBridge(private val context: Context) {
             whitelist["com.google.android.apps.nexuslauncher"] = 0xb662cc2f
         }
 
+//        fun getAvailableProviders(context: Context) = context.packageManager
+//            .queryIntentServices(
+//                Intent(OVERLAY_ACTION).setData(Uri.parse("app://${context.packageName}")),
+//                PackageManager.GET_META_DATA,
+//            )
+//            .asSequence()
+//            .map { it.serviceInfo.applicationInfo }
+//            .distinct()
+//            .filter { getInstance(context).CustomBridgeInfo(it.packageName).isSigned() }
+
         fun getAvailableProviders(context: Context) = context.packageManager
-            .queryIntentServices(
-                Intent(OVERLAY_ACTION).setData(Uri.parse("app://${context.packageName}")),
-                PackageManager.GET_META_DATA,
-            )
+            .queryIntentServices(Intent(OVERLAY_ACTION), PackageManager.GET_META_DATA,)
             .asSequence()
             .map { it.serviceInfo.applicationInfo }
             .distinct()
-            .filter { getInstance(context).CustomBridgeInfo(it.packageName).isSigned() }
 
         @JvmStatic
         fun useBridge(context: Context) = getInstance(context).let { it.shouldUseFeed || it.customBridgeAvailable() }

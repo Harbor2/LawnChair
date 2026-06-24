@@ -371,6 +371,7 @@ dependencies {
     implementation projects.viewcapturelib
     implementation projects.displaylib
     implementation projects.mechanics
+    implementation projects.negativeScreen
 
     // Recents lib dependency
     withQuickstepCompileOnly projects.hiddenApi
@@ -463,7 +464,6 @@ dependencies {
 
     // Compose drag and drop library
     implementation libs.reorderable
-    implementation projects.negativeScreen
 
     // Smartspacer
     implementation(libs.smartspacer.sdk) {

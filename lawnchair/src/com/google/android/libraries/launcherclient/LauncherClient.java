@@ -20,9 +20,8 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-
 import androidx.annotation.NonNull;
-
+import com.android.launcher3.BuildConfig;
 import app.lawnchair.FeedBridge;
 import app.lawnchair.FeedBridge.BridgeInfo;
 import java.lang.ref.WeakReference;
@@ -418,19 +417,30 @@ public class LauncherClient {
         }
     }
 
+//    static Intent getIntent(Context context, boolean proxy) {
+//        BridgeInfo bridgeInfo = proxy ? FeedBridge.Companion.getInstance(context).resolveBridge() : null;
+//        String pkg = context.getPackageName();
+//        return new Intent("com.android.launcher3.WINDOW_OVERLAY")
+//                .setPackage(bridgeInfo != null ? bridgeInfo.getPackageName() : "com.google.android.googlequicksearchbox")
+//                .setData(Uri.parse("app://" +
+//                                pkg +
+//                                ":" +
+//                                Process.myUid())
+//                        .buildUpon()
+//                        .appendQueryParameter("v", Integer.toString(7))
+//                        .appendQueryParameter("cv", Integer.toString(9))
+//                        .build());
+//    }
+
     static Intent getIntent(Context context, boolean proxy) {
-        BridgeInfo bridgeInfo = proxy ? FeedBridge.Companion.getInstance(context).resolveBridge() : null;
+        // 直接写死自己的app
         String pkg = context.getPackageName();
         return new Intent("com.android.launcher3.WINDOW_OVERLAY")
-                .setPackage(bridgeInfo != null ? bridgeInfo.getPackageName() : "com.google.android.googlequicksearchbox")
-                .setData(Uri.parse("app://" +
-                                pkg +
-                                ":" +
-                                Process.myUid())
-                        .buildUpon()
-                        .appendQueryParameter("v", Integer.toString(7))
-                        .appendQueryParameter("cv", Integer.toString(9))
-                        .build());
+            .setPackage(pkg)
+            .setData(Uri.parse("app://" +
+                pkg +
+                ":" +
+                Process.myUid()));
     }
 
     private static void loadApiVersion(Context context) {
