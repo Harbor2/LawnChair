@@ -81,12 +81,12 @@ class NegativeScreenService : Service() {
                 mCurrentLayoutParams = lp
 
                 try {
-                    // 始终允许触摸
+                    // 不允许触摸
                     lp.flags = lp.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     if (mOverlayView?.parent == null) {
                         mWindowManager?.addView(mOverlayView, lp)
                     }
-                    cb?.overlayStatusChanged(3)
+                    cb?.overlayStatusChanged(1)
                 } catch (_: Exception) {
                 }
             }
