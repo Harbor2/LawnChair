@@ -2,14 +2,12 @@ package com.example.negative_screen.ui
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.example.negative_screen.databinding.LayoutNegativeViewBinding
-import com.example.negative_screen.model.TAG
 import kotlin.math.abs
 
 class NegativeView @JvmOverloads constructor(
@@ -48,7 +46,6 @@ class NegativeView @JvmOverloads constructor(
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        Log.d(TAG, "touch=${ev.actionMasked}")
         when (ev.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 downX = ev.rawX

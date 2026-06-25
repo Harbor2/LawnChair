@@ -41,7 +41,6 @@ class NegativeScreenService : Service() {
     private val binder = object : ILauncherOverlay.Stub() {
 
         override fun startScroll() {
-            Log.d(TAG, "startScroll")
             snapAnimator?.cancel()
         }
 
@@ -71,6 +70,7 @@ class NegativeScreenService : Service() {
             cb: ILauncherOverlayCallback?,
             flags: Int
         ) {
+            Log.d(TAG, "windowAttached flags=$flags")
 
             mainHandler.post {
                 if (lp == null) {
@@ -78,11 +78,14 @@ class NegativeScreenService : Service() {
                 }
 
                 mCallback = cb
+                lp.type = WindowManager.LayoutParams.TYPE_APPLICATION
+                // 不允许触摸
+                lp.flags = lp.flags or
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                 mCurrentLayoutParams = lp
 
                 try {
-                    // 不允许触摸
-                    lp.flags = lp.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     if (mOverlayView?.parent == null) {
                         mWindowManager?.addView(mOverlayView, lp)
                     }
@@ -161,7 +164,6 @@ class NegativeScreenService : Service() {
         mOverlayView?.dragCallback = object : NegativeView.DragCallback {
 
                 override fun onDrag(progress: Float) {
-                    Log.d(TAG, "onDrag执行")
                     currentProgress = progress
                     mOverlayView?.overlayProgress = progress
 
@@ -174,7 +176,6 @@ class NegativeScreenService : Service() {
                 }
 
                 override fun onRelease(progress: Float) {
-                    Log.d(TAG, "onRelease执行")
                     currentProgress = progress
                     val targetOpen = progress >= dragCloseThreshold
                     animateToState(targetOpen)
@@ -183,18 +184,20 @@ class NegativeScreenService : Service() {
     }
 
     private fun setTouchable(touchable: Boolean) {
+        Log.d(TAG, "setTouchable： touchable=${touchable}")
         val lp = mCurrentLayoutParams ?: return
         val wm = mWindowManager ?: return
         val view = mOverlayView ?: return
 
         val oldFlags = lp.flags
 
-        lp.flags =
-            if (touchable) {
-                lp.flags and WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE.inv()
-            } else {
-                lp.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-            }
+        if (touchable) {
+            lp.flags = lp.flags and WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE.inv()
+            lp.flags = lp.flags and WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE.inv()
+        } else {
+            lp.flags = lp.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            lp.flags = lp.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        }
 
         if (oldFlags != lp.flags && view.parent != null) {
             try {
@@ -206,6 +209,7 @@ class NegativeScreenService : Service() {
     }
 
     private fun animateToState(open: Boolean) {
+        Log.d(TAG, "animateToState： open=${open}")
         val view = mOverlayView ?: return
         if (!open) {
             setTouchable(false)
@@ -237,6 +241,8 @@ class NegativeScreenService : Service() {
 
                     if (open) {
                         setTouchable(true)
+                    } else {
+                        setTouchable(false)
                     }
                     try {
                         mCallback?.overlayScrollChanged(currentProgress)
