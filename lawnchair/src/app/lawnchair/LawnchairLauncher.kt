@@ -89,6 +89,8 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import com.example.workspace.GuideActivity
+import com.example.util.LauncherUtil
 
 class LawnchairLauncher : QuickstepLauncher() {
     private val defaultOverlay by unsafeLazy { OverlayCallbackImpl(this) }
@@ -243,6 +245,8 @@ class LawnchairLauncher : QuickstepLauncher() {
         reloadIconsIfNeeded()
 
         AppDatabase.INSTANCE.get(this).checkpointSync()
+
+        checkGuideShow()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -269,6 +273,12 @@ class LawnchairLauncher : QuickstepLauncher() {
             if (LawnchairApp.isRecentsEnabled) Stream.of(LawnchairShortcut.PAUSE_APPS) else Stream.empty(),
         ),
     )
+
+    private fun checkGuideShow() {
+        if (!LauncherUtil.isDefaultLauncher(this)) {
+            GuideActivity.startActivity(this)
+        }
+    }
 
     fun updateTheme() {
         if (themeProvider.colorScheme != colorScheme) {

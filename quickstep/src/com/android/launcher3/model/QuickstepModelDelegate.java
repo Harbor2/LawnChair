@@ -203,7 +203,7 @@ public class QuickstepModelDelegate extends ModelDelegate {
             prefs.put(LAST_SNAPSHOT_TIME_MILLIS, now);
         }
 
-        registerSnapshotLoggingCallback();
+//        registerSnapshotLoggingCallback();
     }
 
     protected void additionalSnapshotEvents(InstanceId snapshotInstanceId){}

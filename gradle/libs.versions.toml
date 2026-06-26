@@ -22,6 +22,8 @@ truth = "1.4.5"
 testRules = "1.7.0"
 testRunner = "1.7.0"
 lifecycleRuntimeKtx = "2.10.0"
+appcompat = "1.6.1"
+activityKtx = "1.13.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -156,6 +158,8 @@ mockito-robolectric = { group = "org.mockito", name = "mockito-core", version.re
 mockito-robolectric-bytebuddy = "net.bytebuddy:byte-buddy:1.18.10"
 mockito-robolectric-bytebuddy-agent = "net.bytebuddy:byte-buddy-agent:1.18.10"
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 
 [bundles]
 accompanist = ["accompanist-adaptive", "accompanist-drawablepainter", "accompanist-permissions"]
