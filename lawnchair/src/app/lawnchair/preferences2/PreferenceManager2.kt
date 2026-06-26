@@ -707,6 +707,11 @@ class PreferenceManager2 @Inject constructor(
         defaultValue = context.resources.getBoolean(R.bool.config_default_smartspace_show_time),
     )
 
+    val negativeScreenGuideShown = preference(
+        key = booleanPreferencesKey("negative_screen_guide_shown"),
+        defaultValue = false,
+    )
+
     val smartspaceTimeFormat = preference(
         key = stringPreferencesKey("smartspace_time_format"),
         defaultValue = SmartspaceTimeFormat.fromString(context.getString(R.string.config_default_smartspace_time_format)),

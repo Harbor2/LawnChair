@@ -90,6 +90,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import com.example.workspace.GuideActivity
+import com.example.workspace.NegativeGuideActivity
 import com.example.util.LauncherUtil
 
 class LawnchairLauncher : QuickstepLauncher() {
@@ -277,6 +278,13 @@ class LawnchairLauncher : QuickstepLauncher() {
     private fun checkGuideShow() {
         if (!LauncherUtil.isDefaultLauncher(this)) {
             GuideActivity.startActivity(this)
+        } else {
+            lifecycleScope.launch {
+                if (!preferenceManager2.negativeScreenGuideShown.firstBlocking()) {
+                    NegativeGuideActivity.startActivity(this@LawnchairLauncher)
+                    preferenceManager2.negativeScreenGuideShown.set(true)
+                }
+            }
         }
     }
 

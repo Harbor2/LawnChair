@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">negative-screen</string>
+    <string name="negative_screen_guide_text">向右滑动打开负一屏</string>
 </resources>
