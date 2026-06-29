@@ -144,6 +144,7 @@ final def quickstepMaxSdk = "36"
 android {
     namespace "com.android.launcher3"
     defaultConfig {
+        applicationId "app.lawnchair.play"
         /*
          * Lawnchair Launcher 16.0 Development 5.1
          * see CONTRIBUTING.md#versioning-scheme
@@ -220,8 +221,7 @@ android {
         }
 
         debug {
-            applicationIdSuffix ".debug"
-            resValue("string", "derived_app_name", "Lawnchair (Debug)")
+            resValue("string", "derived_app_name", "Lawnchair")
 
             manifestPlaceholders.quickstepMinSdk = "0"
             manifestPlaceholders.quickstepMaxSdk = "100000"
@@ -248,7 +248,7 @@ android {
     }
 
     // See: https://developer.android.com/studio/build/build-variants#flavor-dimensions
-    flavorDimensions += ["app", "recents", "channel"]
+    flavorDimensions += ["app", "recents"]
 
     productFlavors {
         lawn {
@@ -258,22 +258,6 @@ android {
         withQuickstep {
             dimension "recents"
             minSdk = 26
-        }
-
-        github {
-            applicationId 'app.lawnchair'
-            dimension "channel"
-        }
-
-        nightly {
-            applicationId 'app.lawnchair.nightly'
-            dimension "channel"
-        }
-
-        play {
-            applicationId "app.lawnchair.play"
-            dimension "channel"
-            isDefault true
         }
 
         configureEach {
@@ -309,23 +293,7 @@ android {
             }
         }
 
-        github {
-            manifest.srcFile "github/AndroidManifest.xml"
-        }
-
-        nightly {
-            manifest.srcFile "nightly/AndroidManifest.xml"
-        }
-
-        lawnWithQuickstepGithub {
-            manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
-        }
-
-        lawnWithQuickstepNightly {
-            manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
-        }
-
-        lawnWithQuickstepPlay {
+        lawnWithQuickstep {
             manifest.srcFile "quickstep/AndroidManifest-launcher.xml"
         }
 
@@ -340,9 +308,8 @@ android {
 
 androidComponents {
     onVariants(selector().all()) { variant ->
-        def channel = variant.productFlavors.last().second
         variant.outputs.forEach { output ->
-            output.outputFileName.set("Lawnchair.${output.versionName.get()}.$channel.${variant.buildType}.apk")
+            output.outputFileName.set("Lawnchair.${output.versionName.get()}.${variant.buildType}.apk")
         }
     }
 }

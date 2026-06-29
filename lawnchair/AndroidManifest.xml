@@ -39,6 +39,8 @@
     <uses-permission android:name="android.permission.STATUS_BAR_SERVICE" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.SUSPEND_APPS" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <!-- Support non-cellular enabled devices -->
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
@@ -47,13 +49,13 @@
     <uses-sdk tools:overrideLibrary="com.kieronquinn.app.smartspacer.sdk" />
 
     <permission
-        android:name="${packageName}.permission.READ_SETTINGS"
+        android:name="${applicationId}.permission.READ_SETTINGS"
         tools:node="remove" />
     <permission
-        android:name="${packageName}.permission.WRITE_SETTINGS"
+        android:name="${applicationId}.permission.WRITE_SETTINGS"
         tools:node="remove" />
     <permission
-        android:name="${packageName}.permission.HOTSEAT_EDU"
+        android:name="${applicationId}.permission.HOTSEAT_EDU"
         tools:node="remove" />
 
     <application>
