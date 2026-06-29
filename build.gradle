@@ -143,6 +143,16 @@ final def quickstepMaxSdk = "36"
 
 android {
     namespace "com.android.launcher3"
+
+    signingConfigs {
+        release {
+            storeFile(file("release.keystore.jks"))
+            storePassword("20241022")
+            keyAlias("key0")
+            keyPassword("20241022")
+        }
+    }
+
     defaultConfig {
         applicationId "app.lawnchair.play"
         /*
@@ -160,6 +170,8 @@ android {
         manifestPlaceholders.quickstepMaxSdk = quickstepMaxSdk
         buildConfigField "int", "QUICKSTEP_MIN_SDK", quickstepMinSdk
         buildConfigField "int", "QUICKSTEP_MAX_SDK", quickstepMaxSdk
+
+        signingConfig = signingConfigs.release
     }
 
     androidResources {
@@ -204,12 +216,13 @@ android {
     try {
         def keystoreProperties = new Properties()
         keystoreProperties.load(rootProject.file("keystore.properties").newInputStream())
-        releaseSigning = signingConfigs.create("release") {
+        signingConfigs.release {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storeFile rootProject.file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
         }
+        releaseSigning = signingConfigs.release
     } catch (Exception ignored) {
         releaseSigning = signingConfigs.debug
     }

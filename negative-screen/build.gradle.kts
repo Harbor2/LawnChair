@@ -25,13 +25,6 @@ android {
         aidl = true
         viewBinding = true
     }
-
-    sourceSets {
-        getByName("main") {
-            // 让这个模块也去加载主项目中的 aidl 目录
-            aidl.srcDirs("../lawnchair/aidl")
-        }
-    }
 }
 
 dependencies {
