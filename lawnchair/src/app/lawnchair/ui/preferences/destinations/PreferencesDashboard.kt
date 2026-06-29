@@ -89,32 +89,33 @@ fun PreferencesDashboard(
     val prefs = preferenceManager()
     val prefs2 = preferenceManager2()
 
-    val aboutDescrption = if (prefs.hideVersionInfo.get()) {
-        prefs.pseudonymVersion.get()
-    } else {
-        "${context.getString(R.string.derived_app_name)} ${BuildConfig.MAJOR_VERSION}"
-    }
+//    val aboutDescrption = if (prefs.hideVersionInfo.get()) {
+//        prefs.pseudonymVersion.get()
+//    } else {
+//        "${context.getString(R.string.derived_app_name)} ${BuildConfig.MAJOR_VERSION}"
+//    }
 
     PreferenceLayout(
         label = stringResource(id = R.string.settings),
         modifier = modifier,
         verticalArrangement = Arrangement.Top,
         backArrowVisible = false,
-        actions = { PreferencesOverflowMenu(currentRoute = currentRoute, onNavigate = onNavigate) },
+        isExpandedScreen = true
+//        actions = { PreferencesOverflowMenu(currentRoute = currentRoute, onNavigate = onNavigate) },
     ) {
-        AnnouncementPreference()
+//        AnnouncementPreference()
 
-        if (BuildConfig.APPLICATION_ID.contains("nightly") || BuildConfig.DEBUG) {
-            PreferencesDebugWarning()
-            Spacer(modifier = Modifier.height(8.dp))
-        }
+//        if (BuildConfig.APPLICATION_ID.contains("nightly") || BuildConfig.DEBUG) {
+//            PreferencesDebugWarning()
+//            Spacer(modifier = Modifier.height(8.dp))
+//        }
+//
+//        if (!context.isDefaultLauncher()) {
+//            PreferencesSetDefaultLauncherWarning()
+//            Spacer(modifier = Modifier.height(8.dp))
+//        }
 
-        if (!context.isDefaultLauncher()) {
-            PreferencesSetDefaultLauncherWarning()
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-
-        val deckLayout = prefs2.deckLayout.getAdapter()
+//        val deckLayout = prefs2.deckLayout.getAdapter()
         PreferenceGroup {
             Item {
                 PreferenceCategory(
@@ -128,81 +129,81 @@ fun PreferencesDashboard(
                 )
             }
 
-            Item {
-                PreferenceCategory(
-                    label = stringResource(R.string.home_screen_label),
-                    description = stringResource(R.string.home_screen_description),
-                    iconResource = R.drawable.ic_home_screen,
-                    onNavigate = { onNavigate(HomeScreen) },
-                    isSelected = currentRoute is HomeScreen,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.home_screen_label),
+//                    description = stringResource(R.string.home_screen_description),
+//                    iconResource = R.drawable.ic_home_screen,
+//                    onNavigate = { onNavigate(HomeScreen) },
+//                    isSelected = currentRoute is HomeScreen,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            val isSmartspaceEnabled = prefs2.enableSmartspace.firstBlocking()
-            Item {
-                PreferenceCategory(
-                    label = stringResource(id = R.string.smartspace_widget),
-                    description = stringResource(R.string.smartspace_widget_description),
-                    iconResource = if (isSmartspaceEnabled) R.drawable.ic_smartspace else R.drawable.ic_smartspace_off,
-                    onNavigate = { onNavigate(Smartspace) },
-                    isSelected = currentRoute is Smartspace,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            val isSmartspaceEnabled = prefs2.enableSmartspace.firstBlocking()
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(id = R.string.smartspace_widget),
+//                    description = stringResource(R.string.smartspace_widget_description),
+//                    iconResource = if (isSmartspaceEnabled) R.drawable.ic_smartspace else R.drawable.ic_smartspace_off,
+//                    onNavigate = { onNavigate(Smartspace) },
+//                    isSelected = currentRoute is Smartspace,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            Item {
-                PreferenceCategory(
-                    label = stringResource(R.string.dock_label),
-                    description = stringResource(R.string.dock_description),
-                    iconResource = R.drawable.ic_dock,
-                    onNavigate = { onNavigate(Dock) },
-                    isSelected = currentRoute is Dock,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.dock_label),
+//                    description = stringResource(R.string.dock_description),
+//                    iconResource = R.drawable.ic_dock,
+//                    onNavigate = { onNavigate(Dock) },
+//                    isSelected = currentRoute is Dock,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            Item(
-                key = "app_drawer",
-                visible = !deckLayout.state.value,
-            ) {
-                PreferenceCategory(
-                    label = stringResource(R.string.app_drawer_label),
-                    description = stringResource(R.string.app_drawer_description),
-                    iconResource = R.drawable.ic_apps,
-                    onNavigate = { onNavigate(AppDrawer) },
-                    isSelected = currentRoute is AppDrawer,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item(
+//                key = "app_drawer",
+//                visible = !deckLayout.state.value,
+//            ) {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.app_drawer_label),
+//                    description = stringResource(R.string.app_drawer_description),
+//                    iconResource = R.drawable.ic_apps,
+//                    onNavigate = { onNavigate(AppDrawer) },
+//                    isSelected = currentRoute is AppDrawer,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            Item {
-                PreferenceCategory(
-                    label = stringResource(R.string.search_bar_label),
-                    description = stringResource(R.string.drawer_search_description),
-                    iconResource = R.drawable.ic_search,
-                    onNavigate = { onNavigate(Search()) },
-                    isSelected = currentRoute is Search,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.search_bar_label),
+//                    description = stringResource(R.string.drawer_search_description),
+//                    iconResource = R.drawable.ic_search,
+//                    onNavigate = { onNavigate(Search()) },
+//                    isSelected = currentRoute is Search,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            Item {
-                PreferenceCategory(
-                    label = stringResource(R.string.folders_label),
-                    description = stringResource(R.string.folders_description),
-                    iconResource = R.drawable.ic_folder,
-                    onNavigate = { onNavigate(Folders) },
-                    isSelected = currentRoute is Folders,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.folders_label),
+//                    description = stringResource(R.string.folders_description),
+//                    iconResource = R.drawable.ic_folder,
+//                    onNavigate = { onNavigate(Folders) },
+//                    isSelected = currentRoute is Folders,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
             Item {
                 PreferenceCategory(
@@ -215,44 +216,44 @@ fun PreferencesDashboard(
                     isLast = it.isLast,
                 )
             }
-            Item(
-                "quickstep",
-                LawnchairApp.isRecentsEnabled || BuildConfig.DEBUG,
-            ) {
-                PreferenceCategory(
-                    label = stringResource(id = R.string.quickstep_label),
-                    description = stringResource(id = R.string.quickstep_description),
-                    iconResource = R.drawable.ic_quickstep,
-                    onNavigate = { onNavigate(Quickstep) },
-                    isSelected = currentRoute is Quickstep,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item(
+//                "quickstep",
+//                LawnchairApp.isRecentsEnabled || BuildConfig.DEBUG,
+//            ) {
+//                PreferenceCategory(
+//                    label = stringResource(id = R.string.quickstep_label),
+//                    description = stringResource(id = R.string.quickstep_description),
+//                    iconResource = R.drawable.ic_quickstep,
+//                    onNavigate = { onNavigate(Quickstep) },
+//                    isSelected = currentRoute is Quickstep,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            Item {
-                PreferenceCategory(
-                    label = stringResource(R.string.backup_and_restore_label),
-                    description = stringResource(R.string.backup_and_restore_description),
-                    iconResource = R.drawable.backup_restore,
-                    onNavigate = { onNavigate(BackupAndRestore) },
-                    isSelected = currentRoute is BackupAndRestore,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.backup_and_restore_label),
+//                    description = stringResource(R.string.backup_and_restore_description),
+//                    iconResource = R.drawable.backup_restore,
+//                    onNavigate = { onNavigate(BackupAndRestore) },
+//                    isSelected = currentRoute is BackupAndRestore,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
 
-            Item {
-                PreferenceCategory(
-                    label = stringResource(R.string.about_label),
-                    description = aboutDescrption,
-                    iconResource = R.drawable.ic_about,
-                    onNavigate = { onNavigate(About) },
-                    isSelected = currentRoute is About,
-                    isFirst = it.isFirst,
-                    isLast = it.isLast,
-                )
-            }
+//            Item {
+//                PreferenceCategory(
+//                    label = stringResource(R.string.about_label),
+//                    description = aboutDescrption,
+//                    iconResource = R.drawable.ic_about,
+//                    onNavigate = { onNavigate(About) },
+//                    isSelected = currentRoute is About,
+//                    isFirst = it.isFirst,
+//                    isLast = it.isLast,
+//                )
+//            }
         }
     }
 }
