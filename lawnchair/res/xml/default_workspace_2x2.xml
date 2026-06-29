@@ -45,6 +45,23 @@
     </resolve>
 
     <!-- Bottom row -->
+
+    <favorite
+        launcher:title="Setting2"
+        launcher:packageName="app.lawnchair.play"
+        launcher:className="com.example.workspace.SettingActivity"
+        launcher:screen="0"
+        launcher:x="0"
+        launcher:y="-2" />
+
+    <favorite
+        launcher:title="桌面启动"
+        launcher:packageName="app.lawnchair.play"
+        launcher:className="app.lawnchair.LawnchairLauncher"
+        launcher:screen="0"
+        launcher:x="1"
+        launcher:y="-2" />
+
     <resolve
         launcher:screen="0"
         launcher:x="0"

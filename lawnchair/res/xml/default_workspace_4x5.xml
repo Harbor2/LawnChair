@@ -71,21 +71,13 @@
 
     <!-- Screen 0 -->
 
-    <favorite
-        launcher:title="Setting2"
-        launcher:packageName="app.lawnchair.play"
-        launcher:className="com.example.workspace.SettingActivity"
-        launcher:screen="0"
-        launcher:x="0"
-        launcher:y="-1" />
-
     <!-- Google folder -->
     <!-- Google, Gmail, Maps, YouTube, Drive, YouTube Music, Play Movies, Duo, Photos -->
     <folder
         launcher:title="@string/google_folder_title"
         launcher:screen="0"
         launcher:x="0"
-        launcher:y="-2">
+        launcher:y="-1">
         <favorite
             launcher:packageName="com.google.android.googlequicksearchbox"
             launcher:className="com.google.android.googlequicksearchbox.SearchActivity"/>
@@ -117,7 +109,7 @@
 
     <resolve
         launcher:screen="0"
-        launcher:x="3"
+        launcher:x="1"
         launcher:y="-1">
         <favorite
             launcher:className="com.android.vending.AssetBrowserActivity"
@@ -146,13 +138,29 @@
 
     <resolve
         launcher:screen="1"
-        launcher:x="3"
+        launcher:x="2"
         launcher:y="-1">
         <favorite launcher:uri="#Intent;action=android.settings.SETTINGS;end" />
         <favorite
             launcher:className="com.android.settings.Settings"
             launcher:packageName="com.android.settings" />
     </resolve>
+
+    <favorite
+        launcher:title="Setting2"
+        launcher:packageName="app.lawnchair.play"
+        launcher:className="com.example.workspace.SettingActivity"
+        launcher:screen="0"
+        launcher:x="2"
+        launcher:y="-1" />
+
+    <favorite
+        launcher:title="桌面启动"
+        launcher:packageName="app.lawnchair.play"
+        launcher:className="app.lawnchair.LawnchairLauncher"
+        launcher:screen="0"
+        launcher:x="3"
+        launcher:y="-1" />
 
     <appwidget
         launcher:className="com.android.alarmclock.AnalogAppWidgetProvider"

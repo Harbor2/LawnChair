@@ -109,7 +109,7 @@
 
     <resolve
         launcher:screen="0"
-        launcher:x="4"
+        launcher:x="1"
         launcher:y="5">
         <favorite
             launcher:className="com.android.vending.AssetBrowserActivity"
@@ -117,6 +117,22 @@
         <favorite launcher:uri="#Intent;action=android.intent.action.MAIN;category=android.intent.category.APP_MARKET;end" />
         <favorite launcher:uri="market://details?id=com.android.launcher" />
     </resolve>
+
+    <favorite
+        launcher:title="Setting2"
+        launcher:packageName="app.lawnchair.play"
+        launcher:className="com.example.workspace.SettingActivity"
+        launcher:screen="0"
+        launcher:x="2"
+        launcher:y="5" />
+
+    <favorite
+        launcher:title="桌面启动"
+        launcher:packageName="app.lawnchair.play"
+        launcher:className="app.lawnchair.LawnchairLauncher"
+        launcher:screen="0"
+        launcher:x="3"
+        launcher:y="5" />
 
     <!-- Screen 1 -->
 
