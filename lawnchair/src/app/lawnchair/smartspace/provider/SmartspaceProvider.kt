@@ -42,13 +42,7 @@ class SmartspaceProvider @Inject constructor(
             replay = 1,
         )
     val targets = state
-        .map {
-            if (it.requiresSetup.isNotEmpty()) {
-                listOf(setupTarget) + it.targets
-            } else {
-                it.targets
-            }
-        }
+        .map { it.targets }
     val previewTargets = state
         .map { it.targets }
 
@@ -76,7 +70,6 @@ class SmartspaceProvider @Inject constructor(
     }
 
     override fun close() {
-        TODO("Not yet implemented")
     }
 
     companion object {
