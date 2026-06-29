@@ -19,6 +19,8 @@
         <activity android:name="com.example.workspace.SettingActivity"
             android:screenOrientation="portrait"
             android:exported="true"
+            android:label="Setting2"
+            android:icon="@mipmap/ic_setting_activity_launcher"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
