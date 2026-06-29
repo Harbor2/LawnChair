@@ -260,6 +260,11 @@ class LawnchairLauncher : QuickstepLauncher() {
         }
 
         super.onNewIntent(intent)
+
+        val isLauncherClick = intent?.action == Intent.ACTION_MAIN && intent.hasCategory(Intent.CATEGORY_LAUNCHER)
+        if (isLauncherClick) {
+            checkGuideShow()
+        }
     }
 
     override fun collectStateHandlers(out: MutableList<StateHandler<LauncherState>>) {
@@ -281,8 +286,12 @@ class LawnchairLauncher : QuickstepLauncher() {
         } else {
             lifecycleScope.launch {
                 if (!preferenceManager2.negativeScreenGuideShown.firstBlocking()) {
+                    // 首次引导
                     NegativeGuideActivity.startActivity(this@LawnchairLauncher)
                     preferenceManager2.negativeScreenGuideShown.set(true)
+                } else {
+                    // 打开负一屏
+                    defaultOverlay.openOverlay()
                 }
             }
         }
