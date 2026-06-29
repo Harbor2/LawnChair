@@ -59,7 +59,9 @@ class LawnchairShortcut {
 
         val UNINSTALL =
             SystemShortcut.Factory { activity: ActivityContext, itemInfo: ItemInfo, view: View ->
-                if (PreferenceManager2.INSTANCE.get(activity.asContext()).lockHomeScreen.firstBlocking()) {
+                if (PreferenceManager2.INSTANCE.get(activity.asContext()).lockHomeScreen.firstBlocking() ||
+                    itemInfo.isSettingsItem
+                ) {
                     return@Factory null
                 }
                 if (itemInfo.targetComponent == null) {

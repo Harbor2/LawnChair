@@ -65,6 +65,7 @@ import com.android.launcher3.provider.RestoreDbTask;
 import com.android.launcher3.util.IntArray;
 import com.android.launcher3.util.SandboxContext;
 import com.android.launcher3.widget.LauncherWidgetHolder;
+import com.example.negative_screen.model.NegativeSingleKt;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -667,6 +668,9 @@ public class ModelDbController {
     }
 
     private DefaultLayoutParser getDefaultLayoutParser(LauncherWidgetHolder widgetHolder) {
+        String layoutName = LawnchairApp.getInstance().getResources().getResourceEntryName(mIdp.defaultLayoutId);
+
+        Log.d(NegativeSingleKt.TAG, "获取layout名称：" + layoutName);
         return new DefaultLayoutParser(mContext, widgetHolder,
                 mOpenHelper, mContext.getResources(), mIdp.defaultLayoutId);
     }

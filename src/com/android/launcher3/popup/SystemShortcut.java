@@ -264,7 +264,7 @@ public abstract class SystemShortcut<T extends ActivityContext> extends ItemInfo
     }
 
     public static final Factory<ActivityContext> REMOVE = (context, itemInfo, originalView) -> {
-        if (isHomeLocked(context)) {
+        if (isHomeLocked(context) || itemInfo.isSettingsItem()) {
             return null;
         }
         return new RemoveApp<>(context, itemInfo, originalView);

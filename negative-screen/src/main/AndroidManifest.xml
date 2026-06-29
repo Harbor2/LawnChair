@@ -15,5 +15,14 @@
             android:screenOrientation="portrait"
             android:exported="false"
             android:theme="@style/Theme.TransparentDialog"/>
+
+        <activity android:name="com.example.workspace.SettingActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

@@ -338,6 +338,19 @@ public class ItemInfo {
     }
 
     /**
+     * Returns true if the item is a settings item.
+     */
+    public boolean isSettingsItem() {
+        ComponentName component = getTargetComponent();
+        if (component != null) {
+            String className = component.getClassName();
+            return "app.lawnchair.ui.preferences.PreferenceActivity".equals(className) ||
+                   "com.android.launcher3.settings.SettingsActivity".equals(className);
+        }
+        return false;
+    }
+
+    /**
      * Returns if an Item is in the hotseat.
      */
     public boolean isInHotseat() {

@@ -125,6 +125,9 @@ public class DeleteDropTarget extends ButtonDropTarget {
     }
 
     private boolean canRemove(ItemInfo item) {
+        if (item.isSettingsItem()) {
+            return false;
+        }
         boolean isDeckLayoutFirst = PreferenceExtensionsKt.firstBlocking(pref2.getDeckLayout());
         return isDeckLayoutFirst ? isCanDrop(item) : item.id != ItemInfo.NO_ID;
     }
