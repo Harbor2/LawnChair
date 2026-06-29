@@ -78,16 +78,18 @@ class NegativeScreenService : Service() {
                 }
 
                 mCallback = cb
-                lp.type = WindowManager.LayoutParams.TYPE_APPLICATION
+                val localLp = WindowManager.LayoutParams()
+                localLp.copyFrom(lp)
+                localLp.type = WindowManager.LayoutParams.TYPE_APPLICATION
                 // 不允许触摸
-                lp.flags = lp.flags or
+                localLp.flags = localLp.flags or
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or
                     WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                mCurrentLayoutParams = lp
+                mCurrentLayoutParams = localLp
 
                 try {
                     if (mOverlayView?.parent == null) {
-                        mWindowManager?.addView(mOverlayView, lp)
+                        mWindowManager?.addView(mOverlayView, localLp)
                     }
                     cb?.overlayStatusChanged(1)
                 } catch (_: Exception) {
