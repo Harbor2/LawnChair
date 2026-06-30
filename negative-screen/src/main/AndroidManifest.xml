@@ -20,6 +20,14 @@
             android:screenOrientation="portrait"
             android:exported="false"
             android:theme="@style/Theme.TransparentDialog"/>
+        <activity android:name="com.example.setting.QAActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.TransparentDialog"/>
+        <activity android:name="com.example.setting.BrowseActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.TransparentDialog"/>
 
         <activity android:name="com.example.setting.SettingActivity"
             android:screenOrientation="portrait"

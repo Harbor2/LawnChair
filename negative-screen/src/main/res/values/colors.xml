@@ -12,5 +12,6 @@
 
     <color name="page_main_color">#000000</color>
     <color name="text_main_color">#FFFFFF</color>
+    <color name="text_main_color_30">#4DFFFFFF</color>
     <color name="btn_main_color">#0077FF</color>
 </resources>
