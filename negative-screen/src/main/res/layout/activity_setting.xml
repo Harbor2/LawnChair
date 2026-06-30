@@ -5,18 +5,123 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eeff22">
+    android:background="@color/black">
 
-    <TextView
-        android:id="@+id/guide_text"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="这是设置页面"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="true"
+                app:sbTitle="wifi"/>
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_torch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="false"
+                app:sbTitle="torch"
+                android:layout_marginHorizontal="12dp"/>
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_mobile_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="false"
+                app:sbTitle="Mobile data"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_hotspot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="false"
+                app:sbTitle="Hotspot"/>
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="true"
+                app:sbTitle="Bluetooth"
+                android:layout_marginHorizontal="12dp"/>
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="false"
+                app:sbTitle="Location"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_flight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="false"
+                app:sbTitle="Flight mode"/>
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_help_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="false"
+                app:sbTitle="Help Center"
+                android:layout_marginHorizontal="12dp"/>
+
+            <com.example.setting.SwitchButton
+                android:id="@+id/sbtn_about_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sbIcon="@drawable/iv_setting_btn_wifi"
+                app:sbSelect="true"
+                app:sbTitle="About us"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btn_system_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/iv_setting_entrance"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

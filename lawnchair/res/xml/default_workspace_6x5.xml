@@ -33,7 +33,7 @@
     <favorite
         launcher:title="Setting2"
         launcher:packageName="app.lawnchair.play"
-        launcher:className="com.example.workspace.SettingActivity"
+        launcher:className="com.example.setting.SettingActivity"
         launcher:screen="0"
         launcher:x="1"
         launcher:y="-1" />

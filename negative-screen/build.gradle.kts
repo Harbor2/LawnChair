@@ -41,4 +41,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     debugImplementation(libs.compose.ui.test.manifest)
     debugImplementation(libs.compose.ui.tooling)
+    // ui
+    implementation("com.github.Harbor2:Emlibrary:v2.8.9")
 }

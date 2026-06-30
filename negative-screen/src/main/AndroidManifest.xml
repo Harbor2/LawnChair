@@ -16,7 +16,7 @@
             android:exported="false"
             android:theme="@style/Theme.TransparentDialog"/>
 
-        <activity android:name="com.example.workspace.SettingActivity"
+        <activity android:name="com.example.setting.SettingActivity"
             android:screenOrientation="portrait"
             android:exported="true"
             android:label="Setting2"
@@ -44,5 +44,10 @@
             </intent-filter>
             <meta-data android:name="service.api.version" android:value="9" />
         </service>
+
+        <provider
+            android:name="com.example.NgInitializer"
+            android:authorities="${applicationId}.em-init-provider"
+            android:exported="false" />
     </application>
 </manifest>

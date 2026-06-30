@@ -1,12 +1,12 @@
-package com.example.workspace
+package com.example.setting
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.negative_screen.databinding.ActivityNegativeGuideBinding
 import com.example.negative_screen.databinding.ActivitySettingBinding
 import com.example.util.immersiveWindow
+import com.wyz.emlibrary.em.EMManager
 
 class SettingActivity : AppCompatActivity() {
 
@@ -33,8 +33,11 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-        binding.root.setOnClickListener {
-            finish()
+        binding.btnSystemSetting.setOnClickListener {
+            val intent = Intent(android.provider.Settings.ACTION_SETTINGS).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            }
+            startActivity(intent)
         }
     }
 }
