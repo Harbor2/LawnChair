@@ -1230,6 +1230,8 @@ public class Launcher extends StatefulActivity<LauncherState>
         TraceHelper.INSTANCE.beginSection(ON_RESUME_EVT);
         super.onResume();
 
+        com.android.launcher3.shortcuts.ShortcutRequest.resetCanQuery();
+
         if (mDeferOverlayCallbacks) {
             scheduleDeferredCheck();
         } else {

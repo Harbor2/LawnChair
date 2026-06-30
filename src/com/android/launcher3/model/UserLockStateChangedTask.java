@@ -65,7 +65,7 @@ public class UserLockStateChangedTask implements ModelUpdateTask {
                 for (ShortcutInfo shortcut : shortcuts) {
                     pinnedShortcuts.put(ShortcutKey.fromInfo(shortcut), shortcut);
                 }
-            } else {
+            } else if (!shortcuts.isPermissionDenied()) {
                 // Shortcut manager can fail due to some race condition when the lock state
                 // changes too frequently. For the purpose of the update,
                 // consider it as still locked.

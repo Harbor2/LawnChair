@@ -536,7 +536,7 @@ public class LoaderTask implements Runnable {
                     if (pinnedShortcuts.isEmpty()) {
                         FileLog.d(TAG, "No pinned shortcuts found for user " + user);
                     }
-                } else {
+                } else if (!pinnedShortcuts.isPermissionDenied()) {
                     // Shortcut manager can fail due to some race condition when the
                     // lock state changes too frequently. For the purpose of the loading
                     // shortcuts, consider the user is still locked.

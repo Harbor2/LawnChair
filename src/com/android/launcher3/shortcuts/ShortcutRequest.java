@@ -41,6 +41,12 @@ public class ShortcutRequest {
 
     private static final String TAG = "ShortcutRequest";
 
+    private static volatile boolean sCanQuery = true;
+
+    public static void resetCanQuery() {
+        sCanQuery = true;
+    }
+
     public static final int ALL = ShortcutQuery.FLAG_MATCH_DYNAMIC
             | ShortcutQuery.FLAG_MATCH_MANIFEST | ShortcutQuery.FLAG_MATCH_PINNED;
     public static final int PUBLISHED = ShortcutQuery.FLAG_MATCH_DYNAMIC
@@ -96,35 +102,49 @@ public class ShortcutRequest {
         if (!WIDGETS_ENABLED || mFailed) {
             return QueryResult.DEFAULT;
         }
+        if (!sCanQuery) {
+            return QueryResult.PERMISSION_DENIED;
+        }
         mQuery.setQueryFlags(flags);
 
         try {
             return new QueryResult(mContext.getSystemService(LauncherApps.class)
                     .getShortcuts(mQuery, mUserHandle));
-        } catch (SecurityException | IllegalStateException e) {
-            FileLog.e(TAG, "Failed to query for shortcuts", e);
+        } catch (SecurityException e) {
+            sCanQuery = false;
+            FileLog.d(TAG, "Failed to query for shortcuts: " + e.getMessage());
+            return QueryResult.PERMISSION_DENIED;
+        } catch (IllegalStateException e) {
+            FileLog.e(TAG, "Failed to query for shortcuts (IllegalStateException)", e);
             return QueryResult.DEFAULT;
         }
     }
 
     public static class QueryResult extends ArrayList<ShortcutInfo> {
 
-        static final QueryResult DEFAULT = new QueryResult(!WIDGETS_ENABLED);
+        static final QueryResult DEFAULT = new QueryResult(false, false);
+        static final QueryResult PERMISSION_DENIED = new QueryResult(false, true);
 
         private final boolean mWasSuccess;
+        private final boolean mIsPermissionDenied;
 
         QueryResult(List<ShortcutInfo> result) {
             super(result == null ? Collections.emptyList() : result);
             mWasSuccess = true;
+            mIsPermissionDenied = false;
         }
 
-        QueryResult(boolean wasSuccess) {
+        QueryResult(boolean wasSuccess, boolean isPermissionDenied) {
             mWasSuccess = wasSuccess;
+            mIsPermissionDenied = isPermissionDenied;
         }
-
 
         public boolean wasSuccess() {
             return mWasSuccess;
+        }
+
+        public boolean isPermissionDenied() {
+            return mIsPermissionDenied;
         }
     }
 }
