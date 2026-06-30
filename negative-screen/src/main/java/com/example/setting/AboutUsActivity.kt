@@ -76,7 +76,7 @@ class AboutUsActivity : AppCompatActivity() {
             BrowseActivity.startPrivacyPolicy(this)
         }
         binding.btnUninstall.setOnClickListener {
-            QAActivity.startActivity(this)
+            QAActivity.startActivity(this, true)
         }
     }
 }

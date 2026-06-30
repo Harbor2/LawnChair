@@ -33,7 +33,7 @@ class SettingActivity : AppCompatActivity() {
 
     private fun initListener() {
         binding.sbtnHelpCenter.setOnClickListener {
-            QAActivity.startActivity(this)
+            QAActivity.startActivity(this, true)
         }
         binding.sbtnAboutUs.setOnClickListener {
             AboutUsActivity.startActivity(this)
