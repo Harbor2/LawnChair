@@ -5,8 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.negative_screen.databinding.ActivitySettingBinding
-import com.example.util.immersiveWindow
-import com.wyz.emlibrary.em.EMManager
+import com.wyz.emlibrary.util.immersiveWindowC
 
 class SettingActivity : AppCompatActivity() {
 
@@ -22,7 +21,7 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        immersiveWindow(binding.rootView, false)
+        immersiveWindowC(binding.root, false)
 
         initView()
         initListener()
@@ -33,6 +32,12 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
+        binding.sbtnHelpCenter.setOnClickListener {
+
+        }
+        binding.sbtnAboutUs.setOnClickListener {
+            AboutUsActivity.startActivity(this)
+        }
         binding.btnSystemSetting.setOnClickListener {
             val intent = Intent(android.provider.Settings.ACTION_SETTINGS).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK

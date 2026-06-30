@@ -16,7 +16,6 @@ class SwitchButton @JvmOverloads constructor(
 
     private val binding: LayoutCustomSwitchButtonBinding
     private var mSwitchStatus = false
-    private var mCallback: (() -> Unit)? = null
 
     init {
         binding = LayoutCustomSwitchButtonBinding.inflate(LayoutInflater.from(context), this, true)
@@ -34,14 +33,6 @@ class SwitchButton @JvmOverloads constructor(
         }
 
         updateSwitchStatus(select)
-
-        binding.root.setOnClickListener {
-            mCallback?.invoke()
-        }
-    }
-
-    fun setClickCallback(callback: (() -> Unit)? = null) {
-        mCallback = callback
     }
 
     fun updateSwitchStatus(status: Boolean) {

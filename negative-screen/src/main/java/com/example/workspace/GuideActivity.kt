@@ -6,7 +6,8 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import com.example.negative_screen.databinding.ActivityGuideBinding
-import com.example.util.immersiveWindow
+import com.wyz.emlibrary.util.immersiveWindow
+import com.wyz.emlibrary.util.immersiveWindowC
 
 class GuideActivity : AppCompatActivity() {
 
@@ -22,7 +23,7 @@ class GuideActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGuideBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        immersiveWindow(binding.rootView, false)
+        immersiveWindowC(binding.root, false)
 
         initView()
         initListener()

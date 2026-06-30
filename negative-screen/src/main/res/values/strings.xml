@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">negative-screen</string>
     <string name="negative_screen_guide_text">向右滑动打开负一屏</string>
+    <string name="about_us">About Us</string>
+    <string name="text_privacy_policy">Privacy Policy</string>
+    <string name="uninstall_instructions">Uninstall Instructions</string>
 </resources>
