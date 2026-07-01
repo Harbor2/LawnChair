@@ -34,7 +34,7 @@ sealed class GestureHandlerOption(
 
     data object OpenApp : GestureHandlerOption(
         R.string.gesture_handler_open_app_option,
-        R.drawable.ic_launcher_home,
+        R.mipmap.ic_launcher_home,
         GestureHandlerConfig.OpenApp::class.java,
     ) {
         override suspend fun buildConfig(activity: Activity): GestureHandlerConfig? {

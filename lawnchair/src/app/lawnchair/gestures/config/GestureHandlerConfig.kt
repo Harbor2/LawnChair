@@ -37,7 +37,7 @@ import kotlinx.serialization.Transient
 sealed class GestureHandlerConfig {
 
     @get:DrawableRes
-    open val iconRes: Int = R.drawable.ic_launcher_home
+    open val iconRes: Int = R.mipmap.ic_launcher_home
 
     abstract fun getIcon(context: Context): Icon
     abstract fun getLabel(context: Context): String
