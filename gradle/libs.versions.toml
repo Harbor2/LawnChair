@@ -24,6 +24,7 @@ testRunner = "1.7.0"
 lifecycleRuntimeKtx = "2.10.0"
 appcompat = "1.6.1"
 activityKtx = "1.13.0"
+cardview = "1.0.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -160,6 +161,7 @@ mockito-robolectric-bytebuddy-agent = "net.bytebuddy:byte-buddy-agent:1.18.10"
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 
 [bundles]
 accompanist = ["accompanist-adaptive", "accompanist-drawablepainter", "accompanist-permissions"]

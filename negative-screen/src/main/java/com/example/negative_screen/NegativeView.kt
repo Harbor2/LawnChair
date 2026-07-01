@@ -74,7 +74,7 @@ class NegativeView @JvmOverloads constructor(
             ScreenLightActivity.startActivity(context)
         }
         binding.btnMarquee.setOnClickListener {
-
+            MarqueeOptionsActivity.startActivity(context)
         }
     }
 

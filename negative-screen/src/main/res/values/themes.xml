@@ -10,4 +10,10 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:statusBarColor">#3000</item>
     </style>
+
+    <style name="MarqueeTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
 </resources>

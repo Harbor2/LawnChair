@@ -8,7 +8,9 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="white_10">#1AFFFFFF</color>
+    <color name="white_15">#26FFFFFF</color>
     <color name="white_30">#4DFFFFFF</color>
+    <color name="white_54">#8AFFFFFF</color>
 
     <color name="page_main_color">#01040A</color>
     <color name="text_main_color">#FFFFFF</color>

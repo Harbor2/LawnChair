@@ -41,6 +41,14 @@
             android:screenOrientation="portrait"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".MarqueeOptionsActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".MarqueeTextActivity"
+            android:screenOrientation="landscape"
+            android:exported="false"
+            android:theme="@style/MarqueeTheme"/>
 
         <activity android:name="com.example.setting.SettingActivity"
             android:screenOrientation="portrait"

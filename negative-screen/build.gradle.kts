@@ -32,6 +32,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.compose.material3)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.cardview)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.graphics)

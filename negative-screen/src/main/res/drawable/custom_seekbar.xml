@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景轨道 (track) -->
+    <item android:height="4dp" android:gravity="center_vertical" android:id="@android:id/background">
+        <shape>
+            <corners android:radius="2dp"/>
+            <solid android:color="@color/white_10"/>
+        </shape>
+    </item>
+
+    <!-- 进度条 (progress) -->
+    <item android:height="4dp" android:gravity="center_vertical" android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="2dp" />
+                <solid android:color="@color/btn_main_color" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

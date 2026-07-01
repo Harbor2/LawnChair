@@ -5,8 +5,11 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.core.content.ContextCompat
 import com.example.NegativeContext
+import com.wyz.emlibrary.util.EMUtil
 import java.io.IOException
 import java.util.jar.Manifest
 import org.json.JSONObject
@@ -70,6 +73,37 @@ object LauncherUtil {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         context.startActivity(intent)
+    }
+
+    /**
+     * 10  50  130
+     */
+    fun mapTextSize(progress: Int): Float {
+        val pxSize = if (progress >= 100) {
+            50f + 80 * (progress - 100) / 100f
+        } else {
+            10f + 40f * progress / 100f
+        }
+        return EMUtil.dp2px(pxSize)
+    }
+
+    /**
+     * 0 35 70
+     */
+    fun mapTextSpeed(progress: Int): Int {
+        val result =  if (progress >= 100) {
+            35 + 35 * (progress - 100) / 100
+        } else {
+            35 * progress / 100
+        }
+        return 70 - result
+    }
+
+    fun hideSoftKeyboard(view: EditText, context: Context) {
+        view.clearFocus()
+        val inputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }

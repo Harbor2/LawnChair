@@ -14,4 +14,13 @@
     <string name="ambient_light">Ambient Light</string>
     <string name="text_color">Color</string>
     <string name="text_trans">Trans</string>
+    <string name="marquee">Marquee</string>
+    <string name="text_direction">Direction</string>
+    <string name="text_left">Left</string>
+    <string name="text_right">Right</string>
+    <string name="text_size">Size</string>
+    <string name="text_speed">Speed</string>
+    <string name="text_text_color">Text Color</string>
+    <string name="text_background_color">Background Color</string>
+    <string name="text_play">Play</string>
 </resources>
