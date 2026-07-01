@@ -18,6 +18,7 @@ package app.lawnchair.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.compose.runtime.Stable
 import androidx.core.content.edit
 import app.lawnchair.font.FontCache
 import com.android.launcher3.InvariantDeviceProfile
@@ -25,6 +26,7 @@ import com.android.launcher3.LauncherPrefs
 import java.util.concurrent.CopyOnWriteArraySet
 import org.json.JSONObject
 
+@Stable
 sealed class BasePreferenceManager(private val context: Context) : SharedPreferences.OnSharedPreferenceChangeListener {
     val sp: SharedPreferences = LauncherPrefs.getPrefs(context)
     val prefsMap = mutableMapOf<String, BasePref<*>>()
@@ -93,6 +95,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     abstract inner class BasePref<T>(override val key: String, private val primaryListener: ChangeListener?) : PrefEntry<T> {
         protected var loaded = false
         private val listeners = CopyOnWriteArraySet<PreferenceChangeListener>()
@@ -118,6 +121,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     abstract inner class StringBasedPref<T>(
         key: String,
         override val defaultValue: T,
@@ -152,6 +156,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         protected abstract fun stringify(value: T): String
     }
 
+    @Stable
     inner class StringPref(
         key: String,
         defaultValue: String,
@@ -161,6 +166,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         override fun stringify(value: String) = value
     }
 
+    @Stable
     inner class BoolPref(
         key: String,
         override val defaultValue: Boolean,
@@ -186,6 +192,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     open inner class IntPref(
         key: String,
         private val defaultValueInternal: Int,
@@ -217,6 +224,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     inner class IdpIntPref(
         key: String,
         private val selectDefaultValue: InvariantDeviceProfile.GridOption.() -> Int,
@@ -255,6 +263,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     inner class FloatPref(
         key: String,
         override val defaultValue: Float,
@@ -280,6 +289,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     inner class StringSetPref(
         key: String,
         override val defaultValue: Set<String>,
@@ -305,6 +315,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         }
     }
 
+    @Stable
     inner class FontPref(
         key: String,
         defaultValue: FontCache.Font,
@@ -318,6 +329,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         override fun stringify(value: FontCache.Font) = value.toJsonString()
     }
 
+    @Stable
     inner class ObjectPref<T>(
         key: String,
         defaultValue: T,
@@ -331,6 +343,7 @@ sealed class BasePreferenceManager(private val context: Context) : SharedPrefere
         override fun stringify(value: T) = stringifyFunc(value)
     }
 
+    @Stable
     abstract inner class MutableMapPref<K, V>(
         key: String,
         primaryListener: ChangeListener? = null,

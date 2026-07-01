@@ -1,4 +1,4 @@
-package com.example.negative_screen.ui
+package com.example.negative_screen
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
-import com.example.negative_screen.R
 import com.example.negative_screen.databinding.LayoutNegativeViewBinding
 import com.example.util.FlashUtil
 import com.example.util.LauncherUtil

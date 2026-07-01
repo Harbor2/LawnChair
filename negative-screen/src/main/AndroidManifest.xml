@@ -50,7 +50,7 @@
         </activity>
 
         <service
-            android:name="com.example.negative_screen.ui.NegativeScreenService"
+            android:name="com.example.negative_screen.NegativeScreenService"
             android:exported="true"
             android:enabled="true"
             android:label="Negative Screen (Internal)">

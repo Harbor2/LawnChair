@@ -84,7 +84,6 @@ import com.android.systemui.plugins.shared.LauncherOverlayManager
 import com.android.systemui.shared.system.QuickStepContract
 import com.example.callback.NegativeModuleCallbackManager
 import com.example.callback.PreferenceJumpCallback
-import com.example.setting.QADetailActivity
 import com.kieronquinn.app.smartspacer.sdk.client.SmartspacerClient
 import com.patrykmichalik.opto.core.firstBlocking
 import com.patrykmichalik.opto.core.onEach
@@ -287,7 +286,7 @@ class LawnchairLauncher : QuickstepLauncher(), PreferenceJumpCallback {
     )
 
     override fun onJumpPreference(context: Context) {
-        Log.d(com.example.negative_screen.model.TAG, "点击了。。。。。。。。")
+        Log.d(com.example.model.TAG, "点击了。。。。。。。。")
         startActivity(Intent(context, PreferenceActivity::class.java))
     }
 

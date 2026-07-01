@@ -1,8 +1,7 @@
-package com.example.negative_screen.ui
+package com.example.negative_screen
 
 import android.animation.ValueAnimator
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -13,7 +12,7 @@ import android.widget.FrameLayout
 import android.util.Log
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnEnd
-import com.example.negative_screen.model.TAG
+import com.example.model.TAG
 import com.google.android.libraries.launcherclient.ILauncherOverlay
 import com.google.android.libraries.launcherclient.ILauncherOverlayCallback
 
@@ -147,7 +146,7 @@ class NegativeScreenService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        mWindowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        mWindowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         mOverlayView = NegativeView(this)
 
         mOverlayView?.layoutParams = FrameLayout.LayoutParams(

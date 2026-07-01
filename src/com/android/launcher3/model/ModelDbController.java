@@ -65,7 +65,7 @@ import com.android.launcher3.provider.RestoreDbTask;
 import com.android.launcher3.util.IntArray;
 import com.android.launcher3.util.SandboxContext;
 import com.android.launcher3.widget.LauncherWidgetHolder;
-import com.example.negative_screen.model.NegativeSingleKt;
+import com.example.model.NegativeSingleKt;
 
 import java.util.List;
 import java.util.function.Consumer;

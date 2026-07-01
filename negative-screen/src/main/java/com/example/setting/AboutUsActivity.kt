@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.negative_screen.R
 import com.example.negative_screen.databinding.ActivityAboutUsBinding
-import com.example.negative_screen.model.TAG
+import com.example.model.TAG
 import com.example.util.LauncherUtil
 import com.wyz.emlibrary.em.EMManager
 import com.wyz.emlibrary.util.EMMapUtil
