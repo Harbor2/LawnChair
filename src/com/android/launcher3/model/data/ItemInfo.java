@@ -344,7 +344,7 @@ public class ItemInfo {
         ComponentName component = getTargetComponent();
         if (component != null) {
             String className = component.getClassName();
-            return "com.example.workspace.SettingActivity".equals(className) ||
+            return "com.example.setting.SettingActivity".equals(className) ||
                    "com.android.launcher3.settings.SettingsActivity".equals(className);
         }
         return false;

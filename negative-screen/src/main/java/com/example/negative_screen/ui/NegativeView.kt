@@ -7,11 +7,19 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
-import android.widget.Toast
+import com.example.negative_screen.R
 import com.example.negative_screen.databinding.LayoutNegativeViewBinding
-import com.example.negative_screen.model.TAG
+import com.example.util.FlashUtil
 import com.example.util.LauncherUtil
+import com.wyz.emlibrary.TAG
+import com.wyz.emlibrary.util.EMUtil
 import kotlin.math.abs
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class NegativeView @JvmOverloads constructor(
     context: Context,
@@ -19,34 +27,70 @@ class NegativeView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    var overlayProgress = 0f
-
     interface DragCallback {
         fun onDrag(progress: Float)
         fun onRelease(progress: Float)
     }
-
+    var overlayProgress = 0f
     var dragCallback: DragCallback? = null
-
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
-
     private var downX = 0f
     private var downY = 0f
-
     private var dragging = false
-
     private var binding: LayoutNegativeViewBinding
-        = LayoutNegativeViewBinding.inflate(LayoutInflater.from(context), this, true)
+    private var mScope: CoroutineScope? = null
+
+    /**
+     * 当前闪光灯模式
+     */
+    var mFlashTypeSelected = FlashUtil.FLASH_NORMAL
+
+    /**
+     * 当前闪光灯是否打开
+     */
+    var mFlashIsOpen = false
 
     init {
+        Log.w(TAG, "NegativeView init")
+        binding = LayoutNegativeViewBinding.inflate(LayoutInflater.from(context), this, true)
         initListener()
     }
 
     private fun initListener() {
         binding.btnFlashOpen.setOnClickListener {
-            if (!LauncherUtil.checkCameraPermission(context)) {
-                // camera权限请求
+            processFlash()
+        }
+    }
 
+    private fun processFlash() {
+        if (!LauncherUtil.checkCameraPermission(context)) {
+            mScope?.launch {
+                EMUtil.showToast(context, context.getString(R.string.toast_camera_permission))
+                delay(800L)
+                // camera权限请求
+                LauncherUtil.openAppSettings(context)
+            }
+            return
+        }
+
+        when (mFlashTypeSelected) {
+            FlashUtil.FLASH_NORMAL -> {
+                if (mFlashIsOpen) {
+                    mFlashIsOpen = false
+                    FlashUtil.turnOffFlash(false)
+                } else {
+                    mFlashIsOpen = true
+                    FlashUtil.turnOnFlash(false)
+                }
+            }
+            else -> {
+                if (mFlashIsOpen) {
+                    mFlashIsOpen = false
+                    FlashUtil.turnOffFlash(false)
+                } else {
+                    mFlashIsOpen = true
+                    FlashUtil.startFlickerFlash(mFlashTypeSelected)
+                }
             }
         }
     }
@@ -94,5 +138,19 @@ class NegativeView @JvmOverloads constructor(
         }
 
         return super.dispatchTouchEvent(ev)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        Log.w(TAG, "NegativeView onAttachedToWindow")
+        mScope?.cancel()
+        mScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        Log.w(TAG, "NegativeView onDetachedFromWindow")
+        mScope?.cancel()
+        mScope = null
     }
 }

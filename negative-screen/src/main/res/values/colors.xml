@@ -13,5 +13,6 @@
     <color name="page_main_color">#01040A</color>
     <color name="text_main_color">#FFFFFF</color>
     <color name="text_main_color_30">#4DFFFFFF</color>
+    <color name="text_second_color">#272524</color>
     <color name="btn_main_color">#0077FF</color>
 </resources>

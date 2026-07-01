@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">negative-screen</string>
+    <string name="app_name">LightingUp Expert</string>
     <string name="negative_screen_guide_text">向右滑动打开负一屏</string>
     <string name="about_us">About Us</string>
     <string name="text_privacy_policy">Privacy Policy</string>
@@ -8,4 +8,7 @@
     <string name="have_more_questions">Have More Questions?</string>
     <string name="contact_us">Contact Us</string>
     <string name="help_center">Help Center</string>
+    <string name="toast_camera_permission">Please grant camera permission first</string>
+    <string name="flash_guide_top_title">Get Beautiful Flashlight Tools</string>
+    <string name="tips_launcher_set_home_title">Select LightingUp Expert\nLauncher as your default launcher</string>
 </resources>
