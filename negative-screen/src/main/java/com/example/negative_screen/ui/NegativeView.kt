@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import com.example.negative_screen.databinding.LayoutNegativeViewBinding
 import com.example.negative_screen.model.TAG
+import com.example.util.LauncherUtil
 import kotlin.math.abs
 
 class NegativeView @JvmOverloads constructor(
@@ -42,9 +43,11 @@ class NegativeView @JvmOverloads constructor(
     }
 
     private fun initListener() {
-        binding.centerView.setOnClickListener {
-            Log.d(TAG, "获取当前运行的包名：${context.packageName}")
-            Toast.makeText(context, "hhh", Toast.LENGTH_SHORT).show()
+        binding.btnFlashOpen.setOnClickListener {
+            if (!LauncherUtil.checkCameraPermission(context)) {
+                // camera权限请求
+
+            }
         }
     }
 

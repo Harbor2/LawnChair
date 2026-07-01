@@ -3,8 +3,10 @@ package com.example.util
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
 import com.example.NegativeContext
 import java.io.IOException
+import java.util.jar.Manifest
 import org.json.JSONObject
 
 object LauncherUtil {
@@ -55,5 +57,9 @@ object LauncherUtil {
         return map
     }
 
+
+    fun checkCameraPermission(context: Context): Boolean {
+        return ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+    }
 
 }
