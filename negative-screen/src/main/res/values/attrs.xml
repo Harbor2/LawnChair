@@ -3,6 +3,7 @@
     <!-- wifi security item -->
     <declare-styleable name="SwitchButton">
         <attr name="sbIcon" format="reference"/>
+        <attr name="sbUnIcon" format="reference"/>
         <attr name="sbTitle" format="string"/>
         <attr name="sbSelect" format="boolean"/>
     </declare-styleable>

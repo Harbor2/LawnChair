@@ -69,6 +69,14 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/iv_negative_tips_close"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="@id/container_tips"
+        app:layout_constraintEnd_toEndOf="@id/container_tips"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="-50dp"
         android:layout_marginStart="-40dp"
         android:src="@drawable/iv_guide_finger"

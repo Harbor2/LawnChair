@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:gciVertical="bottom"
-            android:src="@drawable/iv_negative_flash_open"/>
+            android:src="@drawable/iv_negative_flash_off"/>
 
         <View
             android:id="@+id/btn_flash_open"

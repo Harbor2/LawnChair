@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.callback.NegativeModuleCallbackManager
+import com.example.negative_screen.R
 import com.example.negative_screen.databinding.ActivitySettingBinding
 import com.wyz.emlibrary.util.immersiveWindowC
 
@@ -24,6 +26,7 @@ class SettingActivity : AppCompatActivity() {
         immersiveWindowC(binding.root, false)
 
         initView()
+        initData()
         initListener()
     }
 
@@ -31,7 +34,14 @@ class SettingActivity : AppCompatActivity() {
 
     }
 
+    private fun initData() {
+        binding.tvTitle.text = String.format("%s Launcher", getString(R.string.app_name))
+    }
+
     private fun initListener() {
+        binding.btnTopSetting.setOnClickListener {
+            NegativeModuleCallbackManager.preferenceJumpCallback?.onJumpPreference(this)
+        }
         binding.sbtnHelpCenter.setOnClickListener {
             QAActivity.startActivity(this, true)
         }

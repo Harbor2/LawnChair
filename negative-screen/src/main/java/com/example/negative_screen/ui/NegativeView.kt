@@ -57,8 +57,34 @@ class NegativeView @JvmOverloads constructor(
     }
 
     private fun initListener() {
+        binding.btnFlashTypeNormal.setOnClickListener {
+            changeFlashType(FlashUtil.FLASH_NORMAL)
+        }
+        binding.btnFlashTypeSos.setOnClickListener {
+            changeFlashType(FlashUtil.FLASH_SOS)
+        }
+        binding.btnFlashTypeFlicker.setOnClickListener {
+            changeFlashType(FlashUtil.FLASH_FLICKER)
+        }
+
         binding.btnFlashOpen.setOnClickListener {
             processFlash()
+        }
+    }
+
+    private fun changeFlashType(type: String) {
+        if (mFlashIsOpen) return
+        mFlashTypeSelected = type
+        when(type) {
+            FlashUtil.FLASH_NORMAL -> {
+                binding.ivFlashType.setImageResource(R.drawable.iv_negative_flash_type_1)
+            }
+            FlashUtil.FLASH_SOS -> {
+                binding.ivFlashType.setImageResource(R.drawable.iv_negative_flash_type_2)
+            }
+            FlashUtil.FLASH_FLICKER -> {
+                binding.ivFlashType.setImageResource(R.drawable.iv_negative_flash_type_3)
+            }
         }
     }
 
@@ -78,18 +104,22 @@ class NegativeView @JvmOverloads constructor(
                 if (mFlashIsOpen) {
                     mFlashIsOpen = false
                     FlashUtil.turnOffFlash(false)
+                    binding.ivFlashStatus.setImageResource(R.drawable.iv_negative_flash_off)
                 } else {
                     mFlashIsOpen = true
                     FlashUtil.turnOnFlash(false)
+                    binding.ivFlashStatus.setImageResource(R.drawable.iv_negative_flash_open)
                 }
             }
             else -> {
                 if (mFlashIsOpen) {
                     mFlashIsOpen = false
-                    FlashUtil.turnOffFlash(false)
+                    FlashUtil.stopFlickerFlash()
+                    binding.ivFlashStatus.setImageResource(R.drawable.iv_negative_flash_off)
                 } else {
                     mFlashIsOpen = true
                     FlashUtil.startFlickerFlash(mFlashTypeSelected)
+                    binding.ivFlashStatus.setImageResource(if (mFlashTypeSelected == FlashUtil.FLASH_SOS) R.drawable.iv_negative_flash_sos else R.drawable.iv_negative_flash_flicker)
                 }
             }
         }

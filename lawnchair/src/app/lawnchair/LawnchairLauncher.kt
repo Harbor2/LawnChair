@@ -23,6 +23,7 @@ import android.content.Intent
 import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.util.Pair
 import android.view.Display
 import android.view.View
@@ -47,6 +48,7 @@ import app.lawnchair.root.RootNotAvailableException
 import app.lawnchair.theme.ThemeProvider
 import app.lawnchair.ui.popup.LauncherOptionsPopup
 import app.lawnchair.ui.popup.LawnchairShortcut
+import app.lawnchair.ui.preferences.PreferenceActivity
 import app.lawnchair.util.getThemedIconPacksInstalled
 import app.lawnchair.util.unsafeLazy
 import app.lawnchair.views.LawnchairFloatingSurfaceView
@@ -80,6 +82,9 @@ import com.android.launcher3.widget.LauncherWidgetHolder
 import com.android.launcher3.widget.RoundedCornerEnforcement
 import com.android.systemui.plugins.shared.LauncherOverlayManager
 import com.android.systemui.shared.system.QuickStepContract
+import com.example.callback.NegativeModuleCallbackManager
+import com.example.callback.PreferenceJumpCallback
+import com.example.setting.QADetailActivity
 import com.kieronquinn.app.smartspacer.sdk.client.SmartspacerClient
 import com.patrykmichalik.opto.core.firstBlocking
 import com.patrykmichalik.opto.core.onEach
@@ -93,7 +98,7 @@ import com.example.workspace.GuideActivity
 import com.example.workspace.NegativeGuideActivity
 import com.example.util.LauncherUtil
 
-class LawnchairLauncher : QuickstepLauncher() {
+class LawnchairLauncher : QuickstepLauncher(), PreferenceJumpCallback {
     private val defaultOverlay by unsafeLazy { OverlayCallbackImpl(this) }
     private val prefs by unsafeLazy { PreferenceManager.getInstance(this) }
     private val preferenceManager2 by unsafeLazy { PreferenceManager2.getInstance(this) }
@@ -248,6 +253,7 @@ class LawnchairLauncher : QuickstepLauncher() {
         AppDatabase.INSTANCE.get(this).checkpointSync()
 
         checkGuideShow()
+        NegativeModuleCallbackManager.preferenceJumpCallback = this
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -279,6 +285,11 @@ class LawnchairLauncher : QuickstepLauncher() {
             if (LawnchairApp.isRecentsEnabled) Stream.of(LawnchairShortcut.PAUSE_APPS) else Stream.empty(),
         ),
     )
+
+    override fun onJumpPreference(context: Context) {
+        Log.d(com.example.negative_screen.model.TAG, "点击了。。。。。。。。")
+        startActivity(Intent(context, PreferenceActivity::class.java))
+    }
 
     private fun checkGuideShow() {
         if (!LauncherUtil.isDefaultLauncher(this)) {
