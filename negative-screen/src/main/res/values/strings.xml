@@ -11,4 +11,7 @@
     <string name="toast_camera_permission">Please grant camera permission first</string>
     <string name="flash_guide_top_title">Get Beautiful Flashlight Tools</string>
     <string name="tips_launcher_set_home_title">Select LightingUp Expert\nLauncher as your default launcher</string>
+    <string name="ambient_light">Ambient Light</string>
+    <string name="text_color">Color</string>
+    <string name="text_trans">Trans</string>
 </resources>

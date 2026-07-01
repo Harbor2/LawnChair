@@ -69,6 +69,13 @@ class NegativeView @JvmOverloads constructor(
         binding.btnFlashOpen.setOnClickListener {
             processFlash()
         }
+
+        binding.btnAmbientLight.setOnClickListener {
+            ScreenLightActivity.startActivity(context)
+        }
+        binding.btnMarquee.setOnClickListener {
+
+        }
     }
 
     private fun changeFlashType(type: String) {
