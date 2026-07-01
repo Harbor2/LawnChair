@@ -19,15 +19,19 @@
         <activity android:name="com.example.setting.AboutUsActivity"
             android:screenOrientation="portrait"
             android:exported="false"
-            android:theme="@style/Theme.TransparentDialog"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name="com.example.setting.QAActivity"
             android:screenOrientation="portrait"
             android:exported="false"
-            android:theme="@style/Theme.TransparentDialog"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name="com.example.setting.QADetailActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name="com.example.setting.BrowseActivity"
             android:screenOrientation="portrait"
             android:exported="false"
-            android:theme="@style/Theme.TransparentDialog"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
 
         <activity android:name="com.example.setting.SettingActivity"
             android:screenOrientation="portrait"

@@ -17,23 +17,34 @@ import com.wyz.emlibrary.util.EMUtil
 import com.wyz.emlibrary.util.immersiveWindowC
 import android.graphics.Typeface
 import android.view.View
+import com.example.negative_screen.databinding.ActivityDetailQuestionAnswerBinding
 import org.json.JSONObject
 
-class QAActivity : AppCompatActivity() {
+class QADetailActivity : AppCompatActivity() {
 
     companion object {
-        var mShowBottom = false
-        fun startActivity(context: Context, showBottom: Boolean = false) {
-            mShowBottom = showBottom
-            context.startActivity(Intent(context, QAActivity::class.java))
+        private var mAction: Int = -1
+        private var mQue: String = ""
+        private var mAns: String = ""
+
+        fun startActivity(
+            context: Context,
+            action: Int,
+            que: String,
+            ans: String
+        ) {
+            mAction = action
+            mQue = que
+            mAns = ans
+            context.startActivity(Intent(context, QADetailActivity::class.java))
         }
     }
 
-    private lateinit var binding: ActivityQuestionAnswerBinding
+    private lateinit var binding: ActivityDetailQuestionAnswerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityQuestionAnswerBinding.inflate(layoutInflater)
+        binding = ActivityDetailQuestionAnswerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         immersiveWindowC(binding.root, false, binding.containerNavi)
 
@@ -43,45 +54,15 @@ class QAActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        EMManager.from(binding.btnContactUs)
+        EMManager.from(binding.btnAction)
             .setCorner(22f)
             .setBackGroundColor(R.color.btn_main_color)
     }
 
     private fun initData() {
-        binding.llBottom.isVisible = mShowBottom
-        if (mShowBottom) {
-            // help center
-            initHelpCenter()
-        } else {
-            // uninstall
-            initUninstall()
-        }
-
-    }
-
-    private fun initHelpCenter() {
-        binding.tvTitle.text = getString(R.string.help_center)
-        fillContainer("Help_Center")
-    }
-
-    private fun initUninstall() {
-        binding.tvTitle.text = getString(R.string.uninstall_instructions)
-        fillContainer("Uninstall")
-    }
-
-    private fun fillContainer(path: String) {
-        binding.llContainers.removeAllViews()
-
-        val rootMap = LauncherUtil.parseJsonToMapWithJSONObject()
-        val helpCenterMap = EMMapUtil.optMap(rootMap, null, "Application", path) ?: return
-
-        val title = EMMapUtil.optString(helpCenterMap, "", "title")
-        val desc = EMMapUtil.optString(helpCenterMap, "", "desc")
-
-        if (title.isNotEmpty()) {
+        if (mQue.isNotEmpty()) {
             TextView(this).apply {
-                text = title
+                text = mQue
                 textSize = 20f
                 setTypeface(typeface, Typeface.BOLD)
                 setTextColor(EMUtil.getColor(R.color.text_main_color))
@@ -97,9 +78,9 @@ class QAActivity : AppCompatActivity() {
             }
         }
 
-        if (desc.isNotEmpty()) {
+        if (mAns.isNotEmpty()) {
             TextView(this).apply {
-                text = desc
+                text = mAns
                 textSize = 14f
                 setTypeface(typeface, Typeface.NORMAL)
                 setTextColor(EMUtil.getColor(R.color.text_main_color_30))
@@ -115,27 +96,15 @@ class QAActivity : AppCompatActivity() {
             }
         }
 
-        val ques = EMMapUtil.optList(helpCenterMap, null, "ques") ?: return
-
-        View(this).apply {
-            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, EMUtil.dp2Px(32))
-            layoutParams = params
-            binding.llContainers.addView(this)
-        }
-
-        for (i in ques.indices) {
-            val queJsonObject = ques[i] as? JSONObject ?: continue
-
-            val action = queJsonObject.optString("action").toIntOrNull() ?: -1
-            val queTitle = queJsonObject.optString("que") ?: ""
-            val queAns = queJsonObject.optString("ans") ?: ""
-
-            TitleArrowItem(this).apply {
-                updateView(queTitle)
-                setOnClickListener {
-                    QADetailActivity.startActivity(this@QAActivity, action, queTitle, queAns)
-                }
-                binding.llContainers.addView(this)
+        when(mAction) {
+            1 -> {
+                binding.btnAction.isVisible = true
+            }
+            2-> {
+                binding.btnAction.isVisible = true
+            }
+            else -> {
+                binding.btnAction.isVisible = false
             }
         }
     }
@@ -143,12 +112,6 @@ class QAActivity : AppCompatActivity() {
     private fun initListener() {
         binding.ivBack.setOnClickListener {
             finish()
-        }
-        binding.btnMore.setOnClickListener {
-
-        }
-        binding.btnContactUs.setOnClickListener {
-            FeedbackUtils.feedback(this)
         }
     }
 }

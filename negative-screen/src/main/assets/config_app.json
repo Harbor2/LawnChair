@@ -12,17 +12,17 @@
             "ques": [
                 {
                     "action": "-1",
-                    "que": "\tHow to use Smart File Aide Launcher?",
+                    "que": "How to use Smart File Aide Launcher?",
                     "ans": "\tStep 1: Open the Flashlight Panel\n\tSwipe to access the file panel, then check storage, browse files, remove duplicates, hide sensitive data, and recover deleted items – all locally on your device.\n\n\tStep 2: Quick Google Search Access\n\tUse the Google search bar on the main page to perform searches directly fryour home screen. Whether you prefer typing or voice commands, this featurhakes it quick and easy to find what you need without launching a separateincreasing your productivity."
                 },
                 {
                     "action": "1",
-                    "que": "\tWhy does my home screen look different?",
+                    "que": "Why does my home screen look different?",
                     "ans": "\tSmart File Aide Launcher gives your home screen a new layout designed for quicker access to flashlight tools, useful shortcuts, and your apps.\n\tIf you want to access your apps, just swipe up from the bottom of the screen to find and open them easily."
                 },
                 {
                     "action": "-1",
-                    "que": "\tHow to use Smart File Aide Launcher?",
+                    "que": "How to use Smart File Aide Launcher?",
                     "ans": "\tIf you're not satisfied with the new layout, you can switch back to your previous launcher at any time. Keep in mind that if you stop using Smart File Aide Launcher as your default home app, quick access to flashlight tools and launcher features may no longer be available. To switch back, tap the button below to set your preferred launcher as the default."
                 }
             ]
