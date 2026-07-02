@@ -63,7 +63,7 @@
                 app:sbUnIcon="@drawable/iv_setting_btn_wifi_off"
                 app:sbIcon="@drawable/iv_setting_btn_wifi_on"
                 app:sbSelect="false"
-                app:sbTitle="wifi"/>
+                app:sbTitle="@string/text_wifi"/>
 
             <com.example.setting.SwitchButton
                 android:id="@+id/sbtn_flash"
@@ -72,7 +72,7 @@
                 app:sbUnIcon="@drawable/iv_setting_btn_flash_off"
                 app:sbIcon="@drawable/iv_setting_btn_flash_on"
                 app:sbSelect="false"
-                app:sbTitle="torch"
+                app:sbTitle="@string/text_torch"
                 android:layout_marginHorizontal="12dp"/>
 
             <com.example.setting.SwitchButton
@@ -82,7 +82,7 @@
                 app:sbUnIcon="@drawable/iv_setting_btn_liu_off"
                 app:sbIcon="@drawable/iv_setting_btn_liu_on"
                 app:sbSelect="false"
-                app:sbTitle="Mobile data"/>
+                app:sbTitle="@string/text_mobile_data"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +98,7 @@
                 app:sbIcon="@drawable/iv_setting_btn_re_on"
                 app:sbUnIcon="@drawable/iv_setting_btn_re_off"
                 app:sbSelect="false"
-                app:sbTitle="Hotspot"/>
+                app:sbTitle="@string/text_hotspot"/>
 
             <com.example.setting.SwitchButton
                 android:id="@+id/sbtn_bluetooth"
@@ -107,7 +107,7 @@
                 app:sbIcon="@drawable/iv_setting_btn_bluetooth_on"
                 app:sbUnIcon="@drawable/iv_setting_btn_bluetooth_off"
                 app:sbSelect="false"
-                app:sbTitle="Bluetooth"
+                app:sbTitle="@string/text_bluetooth"
                 android:layout_marginHorizontal="12dp"/>
 
             <com.example.setting.SwitchButton
@@ -117,7 +117,7 @@
                 app:sbIcon="@drawable/iv_setting_btn_location_on"
                 app:sbUnIcon="@drawable/iv_setting_btn_locatiion_off"
                 app:sbSelect="false"
-                app:sbTitle="Location"/>
+                app:sbTitle="@string/text_location"/>
         </LinearLayout>
 
         <LinearLayout
@@ -133,7 +133,7 @@
                 app:sbIcon="@drawable/iv_setting_btn_fly_on"
                 app:sbUnIcon="@drawable/iv_setting_btn_fly_off"
                 app:sbSelect="false"
-                app:sbTitle="Flight mode"/>
+                app:sbTitle="@string/text_flight_mode"/>
 
             <com.example.setting.SwitchButton
                 android:id="@+id/sbtn_help_center"
@@ -142,7 +142,7 @@
                 app:sbIcon="@drawable/iv_setting_btn_help_center_on"
                 app:sbUnIcon="@drawable/iv_setting_btn_help_center_off"
                 app:sbSelect="false"
-                app:sbTitle="Help Center"
+                app:sbTitle="@string/text_help_center"
                 android:layout_marginHorizontal="12dp"/>
 
             <com.example.setting.SwitchButton
@@ -152,7 +152,7 @@
                 app:sbIcon="@drawable/iv_setting_btn_about_on"
                 app:sbUnIcon="@drawable/iv_setting_btn_about_off"
                 app:sbSelect="false"
-                app:sbTitle="About us"/>
+                app:sbTitle="@string/text_about_us"/>
         </LinearLayout>
     </LinearLayout>
 

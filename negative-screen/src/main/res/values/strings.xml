@@ -23,4 +23,14 @@
     <string name="text_text_color">Text Color</string>
     <string name="text_background_color">Background Color</string>
     <string name="text_play">Play</string>
+    <string name="text_wifi">Wi-Fi</string>
+    <string name="text_torch">Torch</string>
+    <string name="text_mobile_data">Mobile data</string>
+    <string name="text_hotspot">Hotspot</string>
+    <string name="text_bluetooth">Bluetooth</string>
+    <string name="text_location">Location</string>
+    <string name="text_flight_mode">Flight mode</string>
+    <string name="text_help_center">Help center</string>
+    <string name="text_about_us">About us</string>
+
 </resources>
