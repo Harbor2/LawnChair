@@ -44,4 +44,6 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     // ui
     implementation("com.github.Harbor2:Emlibrary:v2.8.9")
+    // Lottie
+    implementation("com.airbnb.android:lottie:5.1.1")
 }
