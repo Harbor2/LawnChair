@@ -162,7 +162,7 @@ class SettingActivity : AppCompatActivity() {
             NegativeModuleCallbackManager.preferenceJumpCallback?.onJumpPreference(this)
         }
         binding.sbtnHelpCenter.setOnClickListener {
-            QAActivity.startActivity(this, true)
+            QAActivity.startActivity(this, false)
         }
         binding.sbtnAboutUs.setOnClickListener {
             AboutUsActivity.startActivity(this)

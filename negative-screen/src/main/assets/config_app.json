@@ -1,29 +1,88 @@
 {
     "Application": {
         "About_Us": {
-            "desc": "Smart File Aide is a straightforward tool designed to help you organize your device's internal storage and quickly locate your files.\nKey Features:\nStorage Overview & Quick Access: Check your storage usage at a glance and browse files automatically categorized by type\nRecent Files Management: Easily view and track recently added files\nStorage Cleanup: Free up space using dedicated tools to find and delete Similar Photos, Screenshots, Big Files, Empty Folders, and Useless Files\nFile Details: View specific file paths, sizes, and editing dates\nSafe & Starred Folders: Keep sensitive files hidden in the Safe Folder or mark important ones for quick access"
+            "desc": "LightingUp Expert is designed to make flashlight access faster and more convenient while keeping your home screen simple and easy to navigate. You can instantly turn on the torch, switch between practical light modes, and access your everyday apps with ease. Our goal is to provide a smooth, user-friendly experience that seamlessly combines essential flashlight tools with a clean, minimalist launcher design for your daily needs."
         },
         "Uninstall": {
-
-        },
-        "Help_Center": {
-            "title": "Help Center",
-            "desc": "Frequently Asked Questions",
+            "naviTitle": "Uninstall Instructions",
+            "title": "How do I uninstall?",
+            "desc": "We're sorry you're considering uninstalling, but maybe we can help:",
             "ques": [
                 {
                     "action": "-1",
-                    "que": "How to use Smart File Aide Launcher?",
-                    "ans": "\tStep 1: Open the Flashlight Panel\n\tSwipe to access the file panel, then check storage, browse files, remove duplicates, hide sensitive data, and recover deleted items – all locally on your device.\n\n\tStep 2: Quick Google Search Access\n\tUse the Google search bar on the main page to perform searches directly fryour home screen. Whether you prefer typing or voice commands, this featurhakes it quick and easy to find what you need without launching a separateincreasing your productivity."
+                    "que": "I can't find my apps",
+                    "ansTitle": "I can't find my apps？",
+                    "ans": "Finding your apps is easy.\n Just do this:\n Swipe up from the bottom of the home screen to view and access all your installed applications effortlessly."
+                },
+                {
+                    "action": "1",
+                    "que": "Change my phone back to how it was",
+                    "ansTitle": "Why does my home screen look different?",
+                    "ans": "LightingUp Expert Launcher gives your home screen a new layout designed for quicker access to flashlight tools, useful shortcuts, and your apps.\nIf you want to access your apps, just swipe up from the bottom of the screen to find and open them easily.\n\nHow to Restore Your Original Home Screen:\nIf you're not satisfied with the new layout, you can switch back to your previous launcher at any time. Keep in mind that if you stop using LightingUp Expert Launcher as your default home app, quick access to flashlight tools and launcher features may no longer be available. To switch back, tap the button below to set your preferred launcher as the default."
+                },
+                {
+                    "action": "-1",
+                    "que": "I'm seeing too many ads",
+                    "ansTitle": "Why am I seeing ads?",
+                    "ans": "LightingUp Expert Launcher is a free, ad-supported app that allows us to offer the service to all users at no cost. If you find the number of ads bothersome, please feel free to let us know-we appreciate your feedback."
+                },
+                {
+                    "action": "2",
+                    "que": "I want to talk to someone",
+                    "ans": "To connect with our team, tap the button below"
+                },
+                {
+                    "action": "5",
+                    "que": "None of the above. I want to uninstall",
+                    "ansTitle": "How do I uninstall the app?",
+                    "ans": "Please tap the button below to uninstall."
+                }
+            ]
+        },
+        "Help_Center": {
+            "naviTitle": "Help Center",
+            "title": "Frequently Asked Questions",
+            "desc": "",
+            "ques": [
+                {
+                    "action": "-1",
+                    "que": "How to use LightingUp Expert Launcher?",
+                    "ans": "Step 1: Open the Flashlight Panel\n\nSwipe to access the flashlight panel, where you can quickly turn on the torch and switch between different lighting modes.\n\nStep 2: Switch Flashlight Modes\n\nUse the available modes to switch between Torch, SOS, and other light features quickly and easily.\n\nStep 3: Quick Google Search Access\n\nUse the Google search bar on the main page to perform searches directly from your home screen. Whether you prefer typing or voice commands, this feature makes it quick and easy to find what you need without launching a separate app, increasing your productivity."
                 },
                 {
                     "action": "1",
                     "que": "Why does my home screen look different?",
-                    "ans": "\tSmart File Aide Launcher gives your home screen a new layout designed for quicker access to flashlight tools, useful shortcuts, and your apps.\n\tIf you want to access your apps, just swipe up from the bottom of the screen to find and open them easily."
+                    "ans": "LightingUp Expert Launcher gives your home screen a new layout designed for quicker access to flashlight tools, useful shortcuts, and your apps.\n\nIf you want to access your apps, just swipe up from the bottom of the screen to find and open them easily.\n\nHow to Restore Your Original Home Screen:\n\nIf you're not satisfied with the new layout, you can switch back to your previous launcher at any time. Keep in mind that if you stop using Aster Flashlight Launcher as your default home app, quick access to flashlight tools and launcher features may no longer be available. To switch back, tap the button below to set your preferred launcher as the default."
                 },
                 {
                     "action": "-1",
-                    "que": "How to use Smart File Aide Launcher?",
-                    "ans": "\tIf you're not satisfied with the new layout, you can switch back to your previous launcher at any time. Keep in mind that if you stop using Smart File Aide Launcher as your default home app, quick access to flashlight tools and launcher features may no longer be available. To switch back, tap the button below to set your preferred launcher as the default."
+                    "que": "Where are my apps?",
+                    "ans": "Finding your apps is easy.\n Just do this:\n Swipe up from the bottom of the home screen to view and access all your installed applications effortlessly."
+                },
+                {
+                    "action": "2",
+                    "que": "Why am I seeing ads?",
+                    "ans": "LightingUp Expert Launcher is a free, ad-supported app that allows us to offer the service to all users at no cost. If you find the number of ads bothersome, please feel free to let us know-we appreciate your feedback."
+                },
+                {
+                    "action": "3",
+                    "que": "How do I uninstall?",
+                    "ans": ""
+                },
+                {
+                    "action": "-1",
+                    "que": "How do I remove new apps from my home screen?",
+                    "ans": "To remove an app, swipe up from the home screen, then long-press the app icon. Next, tap on App info and select the option to uninstall or remove the app."
+                },
+                {
+                    "action": "-1",
+                    "que": "What is a Launcher?",
+                    "ans": "A launcher controls how your home screen and app list look and behave. LightingUp Expert Launcher also adds quick access to flashlight tools, making your device more convenient for everyday use. "
+                },
+                {
+                    "action": "4",
+                    "que": "Where can I find the privacy policy?",
+                    "ans": ""
                 }
             ]
         }

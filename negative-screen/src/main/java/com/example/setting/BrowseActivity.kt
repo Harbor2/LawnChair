@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import com.example.negative_screen.R
 import com.example.negative_screen.databinding.ActivityWebBinding
+import com.wyz.emlibrary.util.immersiveWindowC
 
 class BrowseActivity : AppCompatActivity() {
 
@@ -36,6 +37,7 @@ class BrowseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWebBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        immersiveWindowC(binding.root, true, binding.containerNavi)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.white)
         binding.webView.setBackgroundColor(getColor(R.color.white))

@@ -19,7 +19,6 @@ class AboutUsActivity : AppCompatActivity() {
 
     companion object {
         fun startActivity(context: Context) {
-            Log.d(TAG, "点击跳转关于页面")
             context.startActivity(Intent(context, AboutUsActivity::class.java))
         }
     }

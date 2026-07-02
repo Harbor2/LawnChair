@@ -60,7 +60,7 @@ class GuideActivity : AppCompatActivity() {
             startActivity(Intent(Settings.ACTION_HOME_SETTINGS))
 
             binding.root.postDelayed({
-                LauncherSelectActivity.startActivity(this)
+                LauncherUtil.setDefaultLauncher(this)
                 finish()
             }, 800)
         }

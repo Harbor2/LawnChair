@@ -8,34 +8,30 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.negative_screen.R
-import com.example.negative_screen.databinding.ActivityQuestionAnswerBinding
 import com.example.util.FeedbackUtils
 import com.example.util.LauncherUtil
 import com.wyz.emlibrary.em.EMManager
-import com.wyz.emlibrary.util.EMMapUtil
 import com.wyz.emlibrary.util.EMUtil
 import com.wyz.emlibrary.util.immersiveWindowC
-import android.graphics.Typeface
-import android.view.View
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.core.content.res.ResourcesCompat
 import com.example.negative_screen.databinding.ActivityDetailQuestionAnswerBinding
-import org.json.JSONObject
 
 class QADetailActivity : AppCompatActivity() {
 
     companion object {
+        private var mNaviTitle: String = ""
         private var mAction: Int = -1
         private var mQue: String = ""
         private var mAns: String = ""
 
         fun startActivity(
             context: Context,
+            naviTitle: String,
             action: Int,
             que: String,
             ans: String
         ) {
+            mNaviTitle = naviTitle
             mAction = action
             mQue = que
             mAns = ans
@@ -63,6 +59,7 @@ class QADetailActivity : AppCompatActivity() {
     }
 
     private fun initData() {
+        binding.tvTitle.text = mNaviTitle
         if (mQue.isNotEmpty()) {
             TextView(this).apply {
                 text = mQue
@@ -101,9 +98,18 @@ class QADetailActivity : AppCompatActivity() {
 
         when(mAction) {
             1 -> {
+                // 切换Home应用
+                binding.btnAction.text = getString(R.string.change_default_launcher)
                 binding.btnAction.isVisible = true
             }
             2-> {
+                // contact us
+                binding.btnAction.text = getString(R.string.contact_us)
+                binding.btnAction.isVisible = true
+            }
+            5 -> {
+                // uninstall
+                binding.btnAction.text = getString(R.string.uninstall)
                 binding.btnAction.isVisible = true
             }
             else -> {
@@ -115,6 +121,23 @@ class QADetailActivity : AppCompatActivity() {
     private fun initListener() {
         binding.ivBack.setOnClickListener {
             finish()
+        }
+        binding.btnAction.setOnClickListener {
+            when(mAction) {
+                1 -> {
+                    // 切换Home应用
+                    LauncherUtil.setDefaultLauncher(this)
+                }
+                2-> {
+                    // contact us
+                    FeedbackUtils.feedback(this)
+                }
+                5 -> {
+                    // uninstall
+                    LauncherUtil.jumpSystemSetting(this)
+                }
+                else -> {}
+            }
         }
     }
 }

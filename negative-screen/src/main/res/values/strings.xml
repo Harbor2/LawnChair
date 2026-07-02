@@ -32,5 +32,7 @@
     <string name="text_flight_mode">Flight mode</string>
     <string name="text_help_center">Help center</string>
     <string name="text_about_us">About us</string>
+    <string name="change_default_launcher">Change Default Launcher</string>
+    <string name="uninstall">Uninstall</string>
 
 </resources>

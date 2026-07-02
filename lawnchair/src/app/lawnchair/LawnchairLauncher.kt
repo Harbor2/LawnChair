@@ -286,7 +286,6 @@ class LawnchairLauncher : QuickstepLauncher(), PreferenceJumpCallback {
     )
 
     override fun onJumpPreference(context: Context) {
-        Log.d(com.example.TAG, "点击了。。。。。。。。")
         startActivity(Intent(context, PreferenceActivity::class.java))
     }
 

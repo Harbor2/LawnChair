@@ -18,14 +18,17 @@ import com.wyz.emlibrary.util.immersiveWindowC
 import android.graphics.Typeface
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
+import com.wyz.emlibrary.util.isNotNullOrEmpty
 import org.json.JSONObject
 
 class QAActivity : AppCompatActivity() {
 
     companion object {
-        var mShowBottom = false
-        fun startActivity(context: Context, showBottom: Boolean = false) {
-            mShowBottom = showBottom
+        var isUnstall = false
+        var mNaviTitle = ""
+        fun startActivity(context: Context, uninstall: Boolean = false, naviTitle: String = "") {
+            isUnstall = uninstall
+            mNaviTitle = naviTitle
             context.startActivity(Intent(context, QAActivity::class.java))
         }
     }
@@ -50,25 +53,8 @@ class QAActivity : AppCompatActivity() {
     }
 
     private fun initData() {
-        binding.llBottom.isVisible = mShowBottom
-        if (mShowBottom) {
-            // help center
-            initHelpCenter()
-        } else {
-            // uninstall
-            initUninstall()
-        }
-
-    }
-
-    private fun initHelpCenter() {
-        binding.tvTitle.text = getString(R.string.help_center)
-        fillContainer("Help_Center")
-    }
-
-    private fun initUninstall() {
-        binding.tvTitle.text = getString(R.string.uninstall_instructions)
-        fillContainer("Uninstall")
+        binding.llBottom.isVisible = !isUnstall
+        fillContainer(if (isUnstall) "Uninstall" else "Help_Center")
     }
 
     private fun fillContainer(path: String) {
@@ -77,9 +63,11 @@ class QAActivity : AppCompatActivity() {
         val rootMap = LauncherUtil.parseJsonToMapWithJSONObject()
         val helpCenterMap = EMMapUtil.optMap(rootMap, null, "Application", path) ?: return
 
+        val naviTitle = EMMapUtil.optString(helpCenterMap, "", "naviTitle")
         val title = EMMapUtil.optString(helpCenterMap, "", "title")
         val desc = EMMapUtil.optString(helpCenterMap, "", "desc")
 
+        binding.tvTitle.text = mNaviTitle.ifEmpty { naviTitle }
         if (title.isNotEmpty()) {
             TextView(this).apply {
                 text = title
@@ -129,12 +117,25 @@ class QAActivity : AppCompatActivity() {
 
             val action = queJsonObject.optString("action").toIntOrNull() ?: -1
             val queTitle = queJsonObject.optString("que") ?: ""
+            val queAnsTitle = queJsonObject.optString("ansTitle") ?: ""
             val queAns = queJsonObject.optString("ans") ?: ""
 
             TitleArrowItem(this).apply {
                 updateView(queTitle)
                 setOnClickListener {
-                    QADetailActivity.startActivity(this@QAActivity, action, queTitle, queAns)
+                    when(action) {
+                        3 -> {
+                            // 跳转卸载
+                            startActivity(this@QAActivity, true, getString(R.string.help_center))
+                        }
+                        4 -> {
+                            // 隐私政策
+                            BrowseActivity.startPrivacyPolicy(this@QAActivity)
+                        }
+                        else -> {
+                            QADetailActivity.startActivity(this@QAActivity, naviTitle, action, queAnsTitle.ifEmpty { queTitle }, queAns)
+                        }
+                    }
                 }
                 binding.llContainers.addView(this)
             }
@@ -144,9 +145,6 @@ class QAActivity : AppCompatActivity() {
     private fun initListener() {
         binding.ivBack.setOnClickListener {
             finish()
-        }
-        binding.btnMore.setOnClickListener {
-
         }
         binding.btnContactUs.setOnClickListener {
             FeedbackUtils.feedback(this)

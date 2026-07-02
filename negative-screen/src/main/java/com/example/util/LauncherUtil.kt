@@ -24,6 +24,21 @@ object LauncherUtil {
         return resolveInfo?.activityInfo?.packageName == context.packageName
     }
 
+    fun setDefaultLauncher(context: Context) {
+        val intent = Intent(Settings.ACTION_HOME_SETTINGS).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(intent)
+    }
+
+    fun jumpSystemSetting(context: Context) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = Uri.fromParts("package", context.packageName, null)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(intent)
+    }
+
     fun parseJsonToMapWithJSONObject(): Map<String, Any>? {
         val jsonString = readJsonFromAssets()
         return try {
