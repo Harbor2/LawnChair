@@ -4,7 +4,7 @@ import android.content.Context
 import android.hardware.camera2.CameraManager
 import android.util.Log
 import com.example.NegativeContext
-import com.example.model.TAG
+import com.example.TAG
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

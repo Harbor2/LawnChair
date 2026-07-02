@@ -1,3 +1,3 @@
-package com.example.model
+package com.example
 
 const val TAG = "WYZ_NEGATIVE"

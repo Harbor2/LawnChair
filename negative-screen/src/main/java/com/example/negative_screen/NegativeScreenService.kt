@@ -12,7 +12,7 @@ import android.widget.FrameLayout
 import android.util.Log
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnEnd
-import com.example.model.TAG
+import com.example.TAG
 import com.google.android.libraries.launcherclient.ILauncherOverlay
 import com.google.android.libraries.launcherclient.ILauncherOverlayCallback
 
