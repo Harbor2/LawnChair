@@ -349,8 +349,8 @@
                 android:textColor="@color/text_main_color"
                 android:textSize="16sp"
                 android:text="@string/text_play"
-                android:textStyle="bold"
                 android:gravity="center"
+                android:fontFamily="@font/product_sans_b"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="32dp"/>

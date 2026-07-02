@@ -17,6 +17,9 @@ import com.wyz.emlibrary.util.EMUtil
 import com.wyz.emlibrary.util.immersiveWindowC
 import android.graphics.Typeface
 import android.view.View
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.core.content.res.ResourcesCompat
 import com.example.negative_screen.databinding.ActivityDetailQuestionAnswerBinding
 import org.json.JSONObject
 
@@ -64,7 +67,7 @@ class QADetailActivity : AppCompatActivity() {
             TextView(this).apply {
                 text = mQue
                 textSize = 20f
-                setTypeface(typeface, Typeface.BOLD)
+                typeface = ResourcesCompat.getFont(context, R.font.product_sans_b)
                 setTextColor(EMUtil.getColor(R.color.text_main_color))
                 val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                 params.setMargins(
@@ -82,7 +85,7 @@ class QADetailActivity : AppCompatActivity() {
             TextView(this).apply {
                 text = mAns
                 textSize = 14f
-                setTypeface(typeface, Typeface.NORMAL)
+                typeface = ResourcesCompat.getFont(context, R.font.product_sans_r)
                 setTextColor(EMUtil.getColor(R.color.text_main_color_30))
                 val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                 params.setMargins(
