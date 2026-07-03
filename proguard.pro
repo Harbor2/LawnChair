@@ -34,3 +34,7 @@
 # This shouldn't concern us much
 -dontwarn androidx.window.extensions.**
 -dontwarn androidx.window.sidecar.**
+
+# emblbiary
+-dontwarn com.wyz.emlibrary.em.EMDrawable$ShadowSide
+-dontwarn com.wyz.emlibrary.em.EMDrawable$Shape
